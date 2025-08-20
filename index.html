@@ -81,6 +81,15 @@
             transform: translateY(-1px);
         }
         
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            color: #475569;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
         .hero {
             min-height: 100vh;
             display: flex;
@@ -423,86 +432,8 @@
             border-radius: 12px;
         }
         
-        .product-placeholder {
-            color: #94a3b8;
-            font-size: 0.9rem;
-            text-align: center;
-            padding: 2rem;
-        }
-        
         .product-content {
             padding: 0 2rem 2rem;
-        }
-        
-        .product-logo {
-            width: 120px;
-            height: 60px;
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: white;
-            border-radius: 12px;
-            border: 2px solid #e2e8f0;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #0f172a;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        
-        .logo-launchpads {
-            background: linear-gradient(135deg, #fff7ed, #fed7aa);
-            border-color: #fb923c;
-            color: #ea580c;
-        }
-        
-        .logo-intelligence {
-            background: linear-gradient(135deg, #eff6ff, #dbeafe);
-            border-color: #60a5fa;
-            color: #1d4ed8;
-        }
-        
-        .logo-hub {
-            background: linear-gradient(135deg, #faf5ff, #e9d5ff);
-            border-color: #a78bfa;
-            color: #7c3aed;
-        }
-        
-        .slide-logo {
-            width: 100px;
-            height: 50px;
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: white;
-            border-radius: 8px;
-            border: 2px solid #e2e8f0;
-            font-size: 1.25rem;
-            font-weight: 700;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        .detail-logo {
-            width: 120px;
-            height: 60px;
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: white;
-            border-radius: 12px;
-            border: 2px solid #e2e8f0;
-            font-size: 1.5rem;
-            font-weight: 700;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        
-        .actual-screenshot {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 12px;
         }
         
         .product-title {
@@ -590,19 +521,6 @@
             margin-bottom: 4rem;
         }
         
-        .detail-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 16px;
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            font-weight: 700;
-            color: white;
-        }
-        
         .detail-header h2 {
             font-size: 2.5rem;
             font-weight: 700;
@@ -649,12 +567,14 @@
             align-items: flex-start;
         }
         
-        .feature-icon {
+        .feature-item .feature-icon {
             font-size: 1.5rem;
             padding: 0.5rem;
             background: #f1f5f9;
             border-radius: 8px;
             flex-shrink: 0;
+            width: auto;
+            height: auto;
         }
         
         .feature-item strong {
@@ -776,147 +696,6 @@
             border-radius: 16px;
         }
         
-        .screenshot-header {
-            height: 40px;
-            background: #f8fafc;
-            border-bottom: 1px solid #e2e8f0;
-            display: flex;
-            align-items: center;
-            padding: 0 1rem;
-            justify-content: space-between;
-        }
-        
-        .screenshot-content {
-            height: 310px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .screenshot-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            padding: 2rem;
-            opacity: 0;
-            transform: translateX(100%);
-            transition: all 0.8s ease-in-out;
-        }
-        
-        .screenshot-slide.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        .screenshot-slide.prev {
-            transform: translateX(-100%);
-        }
-        
-        .slide-mockup {
-            flex: 1;
-            background: #f8fafc;
-            border-radius: 8px;
-            border: 1px solid #e2e8f0;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            position: relative;
-        }
-        
-        .mockup-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        
-        .mockup-title {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #0f172a;
-        }
-        
-        .mockup-status {
-            font-size: 0.7rem;
-            padding: 0.25rem 0.5rem;
-            border-radius: 12px;
-            background: #dcfce7;
-            color: #166534;
-        }
-        
-        .mockup-content {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-        
-        .mockup-row {
-            height: 12px;
-            border-radius: 6px;
-            opacity: 0.7;
-        }
-        
-        .row-orange { background: linear-gradient(90deg, #f97316, #ea580c); }
-        .row-blue { background: linear-gradient(90deg, #3b82f6, #1d4ed8); }
-        .row-green { background: linear-gradient(90deg, #10b981, #059669); }
-        .row-gray { background: #e2e8f0; }
-        
-        .slide-caption {
-            font-size: 0.8rem;
-            color: #64748b;
-            text-align: center;
-            font-weight: 500;
-        }
-        
-        .screenshot-indicators {
-            position: absolute;
-            bottom: 1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 0.5rem;
-        }
-        
-        .screenshot-indicator {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #cbd5e1;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        
-        .screenshot-indicator.active {
-            background: #3b82f6;
-        }
-
-        .screenshot-placeholder {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            color: #94a3b8;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .screenshot-placeholder p {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: #64748b;
-        }
-
-        .screenshot-placeholder span {
-            font-size: 0.85rem;
-            font-style: italic;
-        }
-        
         .resources-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -1010,74 +789,6 @@
             opacity: 1;
         }
         
-        .leadership-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .leader-card {
-            background: white;
-            border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
-            text-align: left;
-        }
-        
-        .leader-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .leader-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .leader-photo {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: #f1f5f9;
-            border: 3px solid #e2e8f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        
-        .leader-photo-placeholder {
-            color: #94a3b8;
-            font-size: 0.75rem;
-            font-style: italic;
-            text-align: center;
-            line-height: 1.2;
-        }
-        
-        .leader-info h4 {
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 0.25rem;
-        }
-        
-        .leader-title {
-            color: #3b82f6;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        
-        .leader-bio {
-            color: #475569;
-            line-height: 1.6;
-            font-size: 0.9rem;
-        }
-        
         .view-all-link {
             color: #3b82f6;
             text-decoration: none;
@@ -1093,6 +804,120 @@
         .view-all-link:hover {
             background: #f8fafc;
             border-color: #3b82f6;
+        }
+        
+        .about-synopsis {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .about-synopsis h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-synopsis p {
+            font-size: 1.125rem;
+            color: #475569;
+            line-height: 1.7;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .bio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .bio-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .bio-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .bio-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .bio-initials {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0f172a, #334155);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .bio-name {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.25rem;
+        }
+
+        .bio-title {
+            color: #3b82f6;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .bio-content {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #475569;
+        }
+
+        .bio-content div {
+            margin-bottom: 0.5rem;
+        }
+
+        .collective-impact {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .collective-impact h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #f8fafc;
+        }
+
+        .collective-impact p {
+            font-size: 1.125rem;
+            line-height: 1.7;
+            color: #cbd5e1;
+            max-width: 800px;
+            margin: 0 auto;
         }
         
         .cta-content {
@@ -1154,10 +979,6 @@
             background: #0f172a;
             color: white;
             transform: scale(1.1);
-        }
-        
-        .mobile-menu {
-            display: none;
         }
 
         /* Demo Request Page Styles */
@@ -1460,159 +1281,41 @@
         .form-step.active {
             display: block;
         }
-
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .time-slot {
-            padding: 0.75rem;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            background: white;
-        }
-
-        .time-slot:hover {
-            border-color: #6366f1;
-            background: #f8fafc;
-        }
-
-        .time-slot.selected {
-            background: #6366f1;
-            color: white;
-            border-color: #6366f1;
-        }
         
-        /* About Us specific styles */
-        .about-synopsis {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .about-synopsis h3 {
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-synopsis p {
-            font-size: 1.125rem;
-            color: #475569;
-            line-height: 1.7;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .bio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .bio-card {
-            background: white;
-            border-radius: 16px;
-            padding: 1.5rem;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
-        }
-
-        .bio-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .bio-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .bio-initials {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #0f172a, #334155);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1rem;
-            flex-shrink: 0;
-        }
-
-        .bio-name {
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 0.25rem;
-        }
-
-        .bio-title {
-            color: #3b82f6;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .bio-content {
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: #475569;
-        }
-
-        .bio-content div {
-            margin-bottom: 0.5rem;
-        }
-
-        .collective-impact {
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-            color: white;
-            padding: 3rem;
-            border-radius: 20px;
-            text-align: center;
-        }
-
-        .collective-impact h3 {
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: #f8fafc;
-        }
-
-        .collective-impact p {
-            font-size: 1.125rem;
-            line-height: 1.7;
-            color: #cbd5e1;
-            max-width: 800px;
-            margin: 0 auto;
+        /* Mobile Responsive Styles */
+        @media (max-width: 1024px) {
+            .section {
+                padding: 4rem 0;
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+            
+            .hero-content {
+                padding: 0 1.5rem;
+                gap: 3rem;
+            }
+            
+            .detail-grid {
+                gap: 3rem;
+            }
+            
+            .demo-container {
+                padding: 1.5rem;
+                gap: 3rem;
+            }
+            
+            .demo-form-section {
+                padding: 2rem;
+            }
         }
         
         @media (max-width: 768px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 2rem;
+            .nav {
+                padding: 1rem;
             }
             
-            .hero-text h1 {
-                font-size: 2.5rem;
+            .logo {
+                font-size: 1.5rem;
             }
             
             .nav-menu {
@@ -1621,20 +1324,169 @@
             
             .mobile-menu {
                 display: block;
-                background: none;
-                border: none;
-                color: #475569;
-                font-size: 1.5rem;
-                cursor: pointer;
             }
             
-            .features-grid,
+            .nav-cta {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+            
+            .hero {
+                min-height: 80vh;
+                padding-top: 4rem;
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+                padding: 0 1rem;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+            
+            .hero-text .subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+            
+            .btn-primary {
+                padding: 0.875rem 1.75rem;
+                width: auto;
+                min-width: 200px;
+            }
+            
+            .hero-visual {
+                height: 300px;
+                order: -1;
+            }
+            
+            .product-showcase {
+                width: 100%;
+                max-width: 350px;
+                height: 280px;
+            }
+            
+            .slide-title {
+                font-size: 1.25rem;
+            }
+            
+            .slide-description {
+                font-size: 0.9rem;
+            }
+            
+            .section {
+                padding: 3rem 0;
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .feature-card {
+                padding: 1.5rem;
+            }
+            
             .product-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .resources-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .resource-category {
+                padding: 1.5rem;
             }
             
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .detail-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .detail-header h2 {
+                font-size: 2rem;
+            }
+            
+            .detail-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .agent-categories {
+                grid-template-columns: 1fr;
+            }
+            
+            .bio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .bio-card {
+                padding: 1.25rem;
+            }
+            
+            .about-synopsis {
+                padding: 2rem;
+            }
+            
+            .about-synopsis h3 {
+                font-size: 1.5rem;
+            }
+            
+            .about-synopsis p {
+                font-size: 1rem;
+            }
+            
+            .collective-impact {
+                padding: 2rem;
+            }
+            
+            .collective-impact h3 {
+                font-size: 1.5rem;
+            }
+            
+            .collective-impact p {
+                font-size: 1rem;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+            
+            .cta-subtitle {
+                font-size: 1rem;
             }
             
             .cta-buttons {
@@ -1649,17 +1501,141 @@
                 padding: 0.5rem;
             }
             
-            .detail-grid {
+            .demo-container {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+                padding: 1rem;
             }
             
-            .agent-categories {
+            .demo-form-section {
+                padding: 1.5rem;
+            }
+            
+            .demo-form-header h1 {
+                font-size: 2rem;
+            }
+            
+            .demo-form-header p {
+                font-size: 1rem;
+            }
+            
+            .form-steps {
+                flex-direction: column;
+                gap: 1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .step {
+                width: 100%;
+                justify-content: flex-start;
+            }
+            
+            .step-connector {
+                display: none;
+            }
+            
+            .form-row {
                 grid-template-columns: 1fr;
             }
-
-            .bio-grid {
-                grid-template-columns: 1fr;
+            
+            .form-actions {
+                flex-direction: column-reverse;
+                gap: 1rem;
+            }
+            
+            .btn-next,
+            .btn-back {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .info-card {
+                padding: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-text .subtitle {
+                font-size: 1rem;
+            }
+            
+            .product-showcase {
+                max-width: 300px;
+                height: 250px;
+            }
+            
+            .showcase-header {
+                padding: 0 1rem;
+            }
+            
+            .showcase-title {
+                font-size: 0.8rem;
+            }
+            
+            .product-slide {
+                padding: 1.5rem;
+            }
+            
+            .slide-title {
+                font-size: 1.125rem;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+            
+            .feature-card {
+                padding: 1.25rem;
+            }
+            
+            .feature-title {
+                font-size: 1.125rem;
+            }
+            
+            .product-header {
+                padding: 1.5rem 1.5rem 0.75rem;
+            }
+            
+            .product-content {
+                padding: 0 1.5rem 1.5rem;
+            }
+            
+            .product-visual {
+                margin: 0 1.5rem 1rem;
+                height: 150px;
+            }
+            
+            .detail-header h2 {
+                font-size: 1.75rem;
+            }
+            
+            .detail-text h3 {
+                font-size: 1.25rem;
+            }
+            
+            .screenshot-container {
+                height: 300px;
+            }
+            
+            .cta-title {
+                font-size: 1.75rem;
+            }
+            
+            .demo-form-header h1 {
+                font-size: 1.75rem;
+            }
+            
+            .step-title {
+                font-size: 0.8rem;
+            }
+            
+            .form-input,
+            .form-select {
+                padding: 0.75rem;
             }
         }
     </style>
@@ -1729,173 +1705,6 @@
             </div>
         </div>
     </section>
-
-    </div>
-
-    <!-- Demo Request Page -->
-    <div id="demo-page" class="demo-page">
-        <div class="demo-container">
-            <div class="demo-form-section">
-                <div class="demo-form-header">
-                    <h1>Request a Demo</h1>
-                    <p>See how ElevateNow can transform your insurance operations in 30 minutes</p>
-                </div>
-
-                <div class="form-steps">
-                    <div class="step">
-                        <div class="step-number active" id="step-1-number">1</div>
-                        <div class="step-title active" id="step-1-title">Contact Information</div>
-                    </div>
-                    <div class="step-connector" id="connector-1"></div>
-                    <div class="step">
-                        <div class="step-number" id="step-2-number">2</div>
-                        <div class="step-title" id="step-2-title">Business Details</div>
-                    </div>
-                    <div class="step-connector" id="connector-2"></div>
-                    <div class="step">
-                        <div class="step-number" id="step-3-number">3</div>
-                        <div class="step-title" id="step-3-title">Schedule Preferences</div>
-                    </div>
-                </div>
-
-                <form id="demo-form">
-                    <!-- Step 1: Contact Information -->
-                    <div class="form-step active" id="step-1">
-                        <div class="form-content">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label class="form-label">First Name *</label>
-                                    <input type="text" class="form-input" id="firstName" required>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Last Name *</label>
-                                    <input type="text" class="form-input" id="lastName" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Email *</label>
-                                <input type="email" class="form-input" id="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Company *</label>
-                                <input type="text" class="form-input" id="company" required>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Step 2: Business Details -->
-                    <div class="form-step" id="step-2">
-                        <div class="form-content">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label class="form-label">Job Title *</label>
-                                    <input type="text" class="form-input" id="jobTitle" required>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Phone Number</label>
-                                    <input type="tel" class="form-input" id="phone">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label class="form-label">Company Size *</label>
-                                    <select class="form-select" id="companySize" required>
-                                        <option value="">Select size</option>
-                                        <option value="1-50">1-50 employees</option>
-                                        <option value="51-200">51-200 employees</option>
-                                        <option value="201-1000">201-1,000 employees</option>
-                                        <option value="1001-5000">1,001-5,000 employees</option>
-                                        <option value="5000+">5,000+ employees</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Industry *</label>
-                                    <select class="form-select" id="industry" required>
-                                        <option value="">Select industry</option>
-                                        <option value="commercial-insurance">Commercial Insurance</option>
-                                        <option value="property-casualty">Property & Casualty</option>
-                                        <option value="specialty-insurance">Specialty Insurance</option>
-                                        <option value="reinsurance">Reinsurance</option>
-                                        <option value="insurtech">InsurTech</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Primary Use Case *</label>
-                                <select class="form-select" id="useCase" required>
-                                    <option value="">Select primary interest</option>
-                                    <option value="submission-processing">Submission Processing Automation</option>
-                                    <option value="underwriting-intelligence">Underwriting Intelligence</option>
-                                    <option value="claims-automation">Claims Processing Automation</option>
-                                    <option value="compliance-governance">AI Compliance & Governance</option>
-                                    <option value="cross-platform-integration">Cross-Platform Integration</option>
-                                    <option value="general-evaluation">General Platform Evaluation</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Step 3: Schedule Preferences -->
-                    <div class="form-step" id="step-3">
-                        <div class="form-content">
-                            <div class="form-group">
-                                <label class="form-label">Preferred Time Zone</label>
-                                <select class="form-select" id="timezone">
-                                    <option value="EST">Eastern Time (EST)</option>
-                                    <option value="CST">Central Time (CST)</option>
-                                    <option value="MST">Mountain Time (MST)</option>
-                                    <option value="PST">Pacific Time (PST)</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Additional Comments</label>
-                                <textarea class="form-input" id="comments" rows="4" placeholder="Any specific areas of interest or questions for our team?"></textarea>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-actions">
-                        <button type="button" class="btn-back" id="prevBtn" onclick="changeStep(-1)" disabled>BACK</button>
-                        <button type="button" class="btn-next" id="nextBtn" onclick="changeStep(1)">NEXT</button>
-                    </div>
-                </form>
-            </div>
-
-            <div class="demo-info-section">
-                <div class="info-card">
-                    <h3>What to Expect</h3>
-                    <ul class="info-list">
-                        <li>30-minute personalized demo</li>
-                        <li>Live Q&A with our experts</li>
-                        <li>Real-world use case examples</li>
-                        <li>Technical architecture overview</li>
-                        <li>Implementation roadmap discussion</li>
-                    </ul>
-                </div>
-
-                <div class="info-card">
-                    <h3>Demo Highlights</h3>
-                    <ul class="info-list">
-                        <li>Agentic workflow automation</li>
-                        <li>Data extraction & analysis</li>
-                        <li>Risk assessment capabilities</li>
-                        <li>Integration with existing systems</li>
-                        <li>ROI & performance metrics</li>
-                    </ul>
-                </div>
-
-                <div class="contact-info">
-                    <h4>Questions?</h4>
-                    <p>Our team is here to help you understand how our platform can benefit your organization.</p>
-                    <a href="mailto:sales@elevatenow.com" class="contact-btn">CONTACT US</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <section class="section">
 
     <section class="section" id="why-elevatenow">
         <!-- Company Belief -->
@@ -2441,11 +2250,176 @@
             <h2 class="cta-title">Ready to elevate your operations?</h2>
             <p class="cta-subtitle">See how your workflows can become intelligent in days, not years</p>
             <div class="cta-buttons">
-                <a href="#" class="btn-primary">Request demo</a>
+                <a href="#" class="btn-primary" onclick="showDemoPage()">Request demo</a>
                 <a href="#" class="btn-secondary">View documentation →</a>
             </div>
         </div>
     </section>
+
+    </div>
+
+    <!-- Demo Request Page -->
+    <div id="demo-page" class="demo-page">
+        <div class="demo-container">
+            <div class="demo-form-section">
+                <div class="demo-form-header">
+                    <h1>Request a Demo</h1>
+                    <p>See how ElevateNow can transform your insurance operations in 30 minutes</p>
+                </div>
+
+                <div class="form-steps">
+                    <div class="step">
+                        <div class="step-number active" id="step-1-number">1</div>
+                        <div class="step-title active" id="step-1-title">Contact Information</div>
+                    </div>
+                    <div class="step-connector" id="connector-1"></div>
+                    <div class="step">
+                        <div class="step-number" id="step-2-number">2</div>
+                        <div class="step-title" id="step-2-title">Business Details</div>
+                    </div>
+                    <div class="step-connector" id="connector-2"></div>
+                    <div class="step">
+                        <div class="step-number" id="step-3-number">3</div>
+                        <div class="step-title" id="step-3-title">Schedule Preferences</div>
+                    </div>
+                </div>
+
+                <form id="demo-form">
+                    <!-- Step 1: Contact Information -->
+                    <div class="form-step active" id="step-1">
+                        <div class="form-content">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">First Name *</label>
+                                    <input type="text" class="form-input" id="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Last Name *</label>
+                                    <input type="text" class="form-input" id="lastName" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email *</label>
+                                <input type="email" class="form-input" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Company *</label>
+                                <input type="text" class="form-input" id="company" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Business Details -->
+                    <div class="form-step" id="step-2">
+                        <div class="form-content">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Job Title *</label>
+                                    <input type="text" class="form-input" id="jobTitle" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-input" id="phone">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Company Size *</label>
+                                    <select class="form-select" id="companySize" required>
+                                        <option value="">Select size</option>
+                                        <option value="1-50">1-50 employees</option>
+                                        <option value="51-200">51-200 employees</option>
+                                        <option value="201-1000">201-1,000 employees</option>
+                                        <option value="1001-5000">1,001-5,000 employees</option>
+                                        <option value="5000+">5,000+ employees</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Industry *</label>
+                                    <select class="form-select" id="industry" required>
+                                        <option value="">Select industry</option>
+                                        <option value="commercial-insurance">Commercial Insurance</option>
+                                        <option value="property-casualty">Property & Casualty</option>
+                                        <option value="specialty-insurance">Specialty Insurance</option>
+                                        <option value="reinsurance">Reinsurance</option>
+                                        <option value="insurtech">InsurTech</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Primary Use Case *</label>
+                                <select class="form-select" id="useCase" required>
+                                    <option value="">Select primary interest</option>
+                                    <option value="submission-processing">Submission Processing Automation</option>
+                                    <option value="underwriting-intelligence">Underwriting Intelligence</option>
+                                    <option value="claims-automation">Claims Processing Automation</option>
+                                    <option value="compliance-governance">AI Compliance & Governance</option>
+                                    <option value="cross-platform-integration">Cross-Platform Integration</option>
+                                    <option value="general-evaluation">General Platform Evaluation</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Schedule Preferences -->
+                    <div class="form-step" id="step-3">
+                        <div class="form-content">
+                            <div class="form-group">
+                                <label class="form-label">Preferred Time Zone</label>
+                                <select class="form-select" id="timezone">
+                                    <option value="EST">Eastern Time (EST)</option>
+                                    <option value="CST">Central Time (CST)</option>
+                                    <option value="MST">Mountain Time (MST)</option>
+                                    <option value="PST">Pacific Time (PST)</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Additional Comments</label>
+                                <textarea class="form-input" id="comments" rows="4" placeholder="Any specific areas of interest or questions for our team?"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-back" id="prevBtn" onclick="changeStep(-1)" disabled>BACK</button>
+                        <button type="button" class="btn-next" id="nextBtn" onclick="changeStep(1)">NEXT</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="demo-info-section">
+                <div class="info-card">
+                    <h3>What to Expect</h3>
+                    <ul class="info-list">
+                        <li>30-minute personalized demo</li>
+                        <li>Live Q&A with our experts</li>
+                        <li>Real-world use case examples</li>
+                        <li>Technical architecture overview</li>
+                        <li>Implementation roadmap discussion</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Demo Highlights</h3>
+                    <ul class="info-list">
+                        <li>Agentic workflow automation</li>
+                        <li>Data extraction & analysis</li>
+                        <li>Risk assessment capabilities</li>
+                        <li>Integration with existing systems</li>
+                        <li>ROI & performance metrics</li>
+                    </ul>
+                </div>
+
+                <div class="contact-info">
+                    <h4>Questions?</h4>
+                    <p>Our team is here to help you understand how our platform can benefit your organization.</p>
+                    <a href="mailto:sales@elevatenow.com" class="contact-btn">CONTACT US</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         let currentStep = 1;
@@ -2655,28 +2629,6 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
-                }
-            });
-        });
-
-        // Active nav highlighting
-        window.addEventListener('scroll', () => {
-            const navItems = document.querySelectorAll('.product-nav-item');
-            const sections = document.querySelectorAll('.section[id]');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (scrollY >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navItems.forEach(item => {
-                item.classList.remove('active');
-                const href = item.getAttribute('href');
-                if (href && href.includes(current)) {
-                    item.classList.add('active');
                 }
             });
         });
