@@ -675,45 +675,98 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            width: 100%;
+            height: 100%;
         }
         
         .screenshot-container {
             width: 100%;
-            max-width: 500px;
-            height: 400px;
+            height: 500px;
             background: white;
-            border-radius: 16px;
+            border-radius: 20px;
             border: 1px solid #e2e8f0;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
             overflow: hidden;
             position: relative;
+            cursor: grab;
+        }
+
+        .screenshot-container:active {
+            cursor: grabbing;
         }
 
         .detail-screenshot {
             width: 120%;
             height: 120%;
             object-fit: cover;
-            border-radius: 16px;
-            animation: slowPan 15s ease-in-out infinite;
+            border-radius: 20px;
+            transition: transform 0.3s ease;
             transform-origin: center center;
+            user-select: none;
+            pointer-events: none;
         }
-        
-        @keyframes slowPan {
-            0% {
-                transform: scale(1) translate(0%, 0%);
-            }
-            25% {
-                transform: scale(1.1) translate(-5%, -3%);
-            }
-            50% {
-                transform: scale(1.05) translate(-8%, -5%);
-            }
-            75% {
-                transform: scale(1.1) translate(-3%, -7%);
-            }
-            100% {
-                transform: scale(1) translate(0%, 0%);
-            }
+
+        .image-controls {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 8px;
+            padding: 0.5rem;
+            backdrop-filter: blur(8px);
+        }
+
+        .control-btn {
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .zoom-level {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(15, 23, 42, 0.8);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            backdrop-filter: blur(8px);
+        }
+
+        .pan-indicator {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(15, 23, 42, 0.8);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .screenshot-container:hover .pan-indicator {
+            opacity: 1;
         }
         
         .resources-grid {
@@ -1572,6 +1625,10 @@
             .info-card {
                 padding: 1.5rem;
             }
+
+            .screenshot-container {
+                height: 350px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -1864,7 +1921,7 @@
                         <p class="product-subtitle" style="font-size: 0.85rem; font-style: italic;">Purpose-Built Launchpads</p>
                     </div>
                     <div class="product-visual">
-                        <img src="images/launchpad1.png" alt="CLEAR360 Dashboard" class="product-screenshot">
+                        <img src="images/launchpad2.png" alt="CLEAR360 Dashboard" class="product-screenshot">
                     </div>
                     <div class="product-content">
                         <p class="product-description">Transform submission intake from 30+ day email cycles to real-time intelligence. ServiceNow-certified with automated validation across multiple sources and 3rd party databases.</p>
@@ -1877,7 +1934,7 @@
                         <p class="product-subtitle" style="font-size: 0.85rem; font-style: italic;">40+ vertical agents for insurance workflows</p>
                     </div>
                     <div class="product-visual">
-                        <img src="images/agentium1.png" alt="Agentium Intelligence Interface" class="product-screenshot">
+                        <img src="images/agentium2.png" alt="Agentium Intelligence Interface" class="product-screenshot">
                     </div>
                     <div class="product-content">
                         <p class="product-description">From ACORDFormsExpert to ClaimsIntelligencePro - deploy specialized agents with built-in compliance. No-code workflow development with enterprise security.</p>
@@ -1890,7 +1947,7 @@
                         <p class="product-subtitle" style="font-size: 0.85rem; font-style: italic;">Unified AI operations command center</p>
                     </div>
                     <div class="product-visual">
-                        <img src="images/asurisk1.png" alt="Asurisk AI Hub Dashboard" class="product-screenshot">
+                        <img src="images/asurisk2.png" alt="Asurisk AI Hub Dashboard" class="product-screenshot">
                     </div>
                     <div class="product-content">
                         <p class="product-description">360° compliance visibility across all AI initiatives. Automated audits, continuous monitoring, and dynamic guardrails ensure regulatory adherence across jurisdictions.</p>
@@ -1940,8 +1997,15 @@
                     </div>
                     
                     <div class="detail-visual">
-                        <div class="screenshot-container">
+                        <div class="screenshot-container" id="screenshot-1">
                             <img src="images/launchpad2.png" alt="CLEARNOW360 Detailed Interface" class="detail-screenshot">
+                            <div class="zoom-level">100%</div>
+                            <div class="pan-indicator">Click and drag to pan</div>
+                            <div class="image-controls">
+                                <button class="control-btn" onclick="resetImage('screenshot-1')" title="Reset View">⌂</button>
+                                <button class="control-btn" onclick="zoomImage('screenshot-1', 0.1)" title="Zoom In">+</button>
+                                <button class="control-btn" onclick="zoomImage('screenshot-1', -0.1)" title="Zoom Out">-</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1959,8 +2023,15 @@
                 
                 <div class="detail-grid">
                     <div class="detail-visual">
-                        <div class="screenshot-container">
+                        <div class="screenshot-container" id="screenshot-2">
                             <img src="images/agentium2.png" alt="Agentium Agent Catalog" class="detail-screenshot">
+                            <div class="zoom-level">100%</div>
+                            <div class="pan-indicator">Click and drag to pan</div>
+                            <div class="image-controls">
+                                <button class="control-btn" onclick="resetImage('screenshot-2')" title="Reset View">⌂</button>
+                                <button class="control-btn" onclick="zoomImage('screenshot-2', 0.1)" title="Zoom In">+</button>
+                                <button class="control-btn" onclick="zoomImage('screenshot-2', -0.1)" title="Zoom Out">-</button>
+                            </div>
                         </div>
                     </div>
                     
@@ -2044,8 +2115,15 @@
                     </div>
                     
                     <div class="detail-visual">
-                        <div class="screenshot-container">
+                        <div class="screenshot-container" id="screenshot-3">
                             <img src="images/asurisk2.png" alt="Asurisk AI Hub Operations Center" class="detail-screenshot">
+                            <div class="zoom-level">100%</div>
+                            <div class="pan-indicator">Click and drag to pan</div>
+                            <div class="image-controls">
+                                <button class="control-btn" onclick="resetImage('screenshot-3')" title="Reset View">⌂</button>
+                                <button class="control-btn" onclick="zoomImage('screenshot-3', 0.1)" title="Zoom In">+</button>
+                                <button class="control-btn" onclick="zoomImage('screenshot-3', -0.1)" title="Zoom Out">-</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2654,7 +2732,133 @@
         });
 
         // Initialize carousel when page loads
-        window.addEventListener('load', initializeCarousel);
+        window.addEventListener('load', function() {
+            initializeCarousel();
+            initializeImageViewers();
+        });
+
+        // Interactive Image Viewer Functions
+        function initializeImageViewers() {
+            const containers = document.querySelectorAll('.screenshot-container');
+            
+            containers.forEach(container => {
+                const img = container.querySelector('.detail-screenshot');
+                let isDragging = false;
+                let startX = 0;
+                let startY = 0;
+                let currentX = 0;
+                let currentY = 0;
+                let scale = 1;
+                
+                // Store initial state
+                container.imageState = {
+                    x: 0,
+                    y: 0,
+                    scale: 1
+                };
+                
+                // Mouse events
+                container.addEventListener('mousedown', function(e) {
+                    isDragging = true;
+                    startX = e.clientX - currentX;
+                    startY = e.clientY - currentY;
+                    container.style.cursor = 'grabbing';
+                });
+                
+                document.addEventListener('mousemove', function(e) {
+                    if (!isDragging) return;
+                    
+                    e.preventDefault();
+                    currentX = e.clientX - startX;
+                    currentY = e.clientY - startY;
+                    
+                    // Apply bounds to prevent excessive panning
+                    const maxPan = 100;
+                    currentX = Math.max(-maxPan, Math.min(maxPan, currentX));
+                    currentY = Math.max(-maxPan, Math.min(maxPan, currentY));
+                    
+                    container.imageState.x = currentX;
+                    container.imageState.y = currentY;
+                    
+                    updateImageTransform(container);
+                });
+                
+                document.addEventListener('mouseup', function() {
+                    isDragging = false;
+                    container.style.cursor = 'grab';
+                });
+                
+                // Touch events for mobile
+                container.addEventListener('touchstart', function(e) {
+                    isDragging = true;
+                    const touch = e.touches[0];
+                    startX = touch.clientX - currentX;
+                    startY = touch.clientY - currentY;
+                });
+                
+                container.addEventListener('touchmove', function(e) {
+                    if (!isDragging) return;
+                    
+                    e.preventDefault();
+                    const touch = e.touches[0];
+                    currentX = touch.clientX - startX;
+                    currentY = touch.clientY - startY;
+                    
+                    const maxPan = 100;
+                    currentX = Math.max(-maxPan, Math.min(maxPan, currentX));
+                    currentY = Math.max(-maxPan, Math.min(maxPan, currentY));
+                    
+                    container.imageState.x = currentX;
+                    container.imageState.y = currentY;
+                    
+                    updateImageTransform(container);
+                });
+                
+                container.addEventListener('touchend', function() {
+                    isDragging = false;
+                });
+                
+                // Mouse wheel zoom
+                container.addEventListener('wheel', function(e) {
+                    e.preventDefault();
+                    const zoomIntensity = 0.1;
+                    const zoomDirection = e.deltaY > 0 ? -zoomIntensity : zoomIntensity;
+                    zoomImage(container.id, zoomDirection);
+                });
+            });
+        }
+        
+        function updateImageTransform(container) {
+            const img = container.querySelector('.detail-screenshot');
+            const state = container.imageState;
+            
+            img.style.transform = `scale(${state.scale}) translate(${state.x}px, ${state.y}px)`;
+            
+            // Update zoom level display
+            const zoomDisplay = container.querySelector('.zoom-level');
+            zoomDisplay.textContent = Math.round(state.scale * 100) + '%';
+        }
+        
+        function zoomImage(containerId, zoomDelta) {
+            const container = document.getElementById(containerId);
+            const state = container.imageState;
+            
+            state.scale += zoomDelta;
+            state.scale = Math.max(0.5, Math.min(3, state.scale)); // Limit zoom between 50% and 300%
+            
+            // Adjust pan limits based on zoom level
+            const maxPan = 100 * state.scale;
+            state.x = Math.max(-maxPan, Math.min(maxPan, state.x));
+            state.y = Math.max(-maxPan, Math.min(maxPan, state.y));
+            
+            updateImageTransform(container);
+        }
+        
+        function resetImage(containerId) {
+            const container = document.getElementById(containerId);
+            container.imageState = { x: 0, y: 0, scale: 1 };
+            updateImageTransform(container);
+        }
     </script>
 </body>
 </html>
