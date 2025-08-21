@@ -705,69 +705,6 @@
             user-select: none;
             pointer-events: none;
         }
-
-        .image-controls {
-            position: absolute;
-            bottom: 1rem;
-            right: 1rem;
-            display: flex;
-            gap: 0.5rem;
-            background: rgba(15, 23, 42, 0.8);
-            border-radius: 8px;
-            padding: 0.5rem;
-            backdrop-filter: blur(8px);
-        }
-
-        .control-btn {
-            width: 32px;
-            height: 32px;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            border-radius: 4px;
-            color: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            transition: all 0.2s ease;
-        }
-
-        .control-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
-        }
-
-        .zoom-level {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: rgba(15, 23, 42, 0.8);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            backdrop-filter: blur(8px);
-        }
-
-        .pan-indicator {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            background: rgba(15, 23, 42, 0.8);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            backdrop-filter: blur(8px);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .screenshot-container:hover .pan-indicator {
-            opacity: 1;
-        }
         
         .resources-grid {
             display: grid;
@@ -1999,13 +1936,6 @@
                     <div class="detail-visual">
                         <div class="screenshot-container" id="screenshot-1">
                             <img src="images/launchpad2.png" alt="CLEARNOW360 Detailed Interface" class="detail-screenshot">
-                            <div class="zoom-level">100%</div>
-                            <div class="pan-indicator">Click and drag to pan</div>
-                            <div class="image-controls">
-                                <button class="control-btn" onclick="resetImage('screenshot-1')" title="Reset View">⌂</button>
-                                <button class="control-btn" onclick="zoomImage('screenshot-1', 0.1)" title="Zoom In">+</button>
-                                <button class="control-btn" onclick="zoomImage('screenshot-1', -0.1)" title="Zoom Out">-</button>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -2025,13 +1955,6 @@
                     <div class="detail-visual">
                         <div class="screenshot-container" id="screenshot-2">
                             <img src="images/agentium2.png" alt="Agentium Agent Catalog" class="detail-screenshot">
-                            <div class="zoom-level">100%</div>
-                            <div class="pan-indicator">Click and drag to pan</div>
-                            <div class="image-controls">
-                                <button class="control-btn" onclick="resetImage('screenshot-2')" title="Reset View">⌂</button>
-                                <button class="control-btn" onclick="zoomImage('screenshot-2', 0.1)" title="Zoom In">+</button>
-                                <button class="control-btn" onclick="zoomImage('screenshot-2', -0.1)" title="Zoom Out">-</button>
-                            </div>
                         </div>
                     </div>
                     
@@ -2117,13 +2040,6 @@
                     <div class="detail-visual">
                         <div class="screenshot-container" id="screenshot-3">
                             <img src="images/asurisk2.png" alt="Asurisk AI Hub Operations Center" class="detail-screenshot">
-                            <div class="zoom-level">100%</div>
-                            <div class="pan-indicator">Click and drag to pan</div>
-                            <div class="image-controls">
-                                <button class="control-btn" onclick="resetImage('screenshot-3')" title="Reset View">⌂</button>
-                                <button class="control-btn" onclick="zoomImage('screenshot-3', 0.1)" title="Zoom In">+</button>
-                                <button class="control-btn" onclick="zoomImage('screenshot-3', -0.1)" title="Zoom Out">-</button>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -2157,14 +2073,9 @@
     </section>
 
     <section class="section" id="about-us">
-        <div class="section-header">
-            <h2 class="section-title">About Us</h2>
-            <p class="section-subtitle">Industry Pioneers Building the Future of Insurance Intelligence</p>
-        </div>
-
         <!-- About Us Synopsis -->
         <div class="about-synopsis">
-            <h3>Industry Pioneers and Practitioners</h3>
+            <h3>Industry practitioners building the future of insurance intelligence</h3>
             <p>We are a collection of industry pioneers and practitioners who have spent decades at the intersection of business and technology within commercial insurance. Our team combines deep domain expertise with proven track records of driving digital transformation at Fortune 100 scale. We've architected the systems, led the partnerships, and built the ecosystems that define modern insurance operations. Having lived through the challenges of scaling AI in heavily regulated environments, we understand what works—and what doesn't—when bridging cutting-edge technology with real-world business outcomes.</p>
         </div>
 
@@ -2750,11 +2661,9 @@
                 let currentY = 0;
                 let scale = 1;
                 
-                // Store initial state
+                // Store initial state - only horizontal position needed
                 container.imageState = {
-                    x: 0,
-                    y: 0,
-                    scale: 1
+                    x: 0
                 };
                 
                 // Mouse events
@@ -2770,15 +2679,14 @@
                     
                     e.preventDefault();
                     currentX = e.clientX - startX;
-                    currentY = e.clientY - startY;
+                    // Remove vertical panning - only allow horizontal
                     
                     // Apply bounds to prevent excessive panning
                     const maxPan = 100;
                     currentX = Math.max(-maxPan, Math.min(maxPan, currentX));
-                    currentY = Math.max(-maxPan, Math.min(maxPan, currentY));
                     
                     container.imageState.x = currentX;
-                    container.imageState.y = currentY;
+                    // Don't update Y position
                     
                     updateImageTransform(container);
                 });
@@ -2802,14 +2710,13 @@
                     e.preventDefault();
                     const touch = e.touches[0];
                     currentX = touch.clientX - startX;
-                    currentY = touch.clientY - startY;
+                    // Remove vertical panning - only allow horizontal
                     
                     const maxPan = 100;
                     currentX = Math.max(-maxPan, Math.min(maxPan, currentX));
-                    currentY = Math.max(-maxPan, Math.min(maxPan, currentY));
                     
                     container.imageState.x = currentX;
-                    container.imageState.y = currentY;
+                    // Don't update Y position
                     
                     updateImageTransform(container);
                 });
@@ -2818,13 +2725,7 @@
                     isDragging = false;
                 });
                 
-                // Mouse wheel zoom
-                container.addEventListener('wheel', function(e) {
-                    e.preventDefault();
-                    const zoomIntensity = 0.1;
-                    const zoomDirection = e.deltaY > 0 ? -zoomIntensity : zoomIntensity;
-                    zoomImage(container.id, zoomDirection);
-                });
+                // Remove mouse wheel zoom - no longer needed
             });
         }
         
@@ -2832,31 +2733,13 @@
             const img = container.querySelector('.detail-screenshot');
             const state = container.imageState;
             
-            img.style.transform = `scale(${state.scale}) translate(${state.x}px, ${state.y}px)`;
-            
-            // Update zoom level display
-            const zoomDisplay = container.querySelector('.zoom-level');
-            zoomDisplay.textContent = Math.round(state.scale * 100) + '%';
-        }
-        
-        function zoomImage(containerId, zoomDelta) {
-            const container = document.getElementById(containerId);
-            const state = container.imageState;
-            
-            state.scale += zoomDelta;
-            state.scale = Math.max(0.5, Math.min(3, state.scale)); // Limit zoom between 50% and 300%
-            
-            // Adjust pan limits based on zoom level
-            const maxPan = 100 * state.scale;
-            state.x = Math.max(-maxPan, Math.min(maxPan, state.x));
-            state.y = Math.max(-maxPan, Math.min(maxPan, state.y));
-            
-            updateImageTransform(container);
+            // Only apply horizontal translation, no vertical or scaling
+            img.style.transform = `translateX(${state.x}px)`;
         }
         
         function resetImage(containerId) {
             const container = document.getElementById(containerId);
-            container.imageState = { x: 0, y: 0, scale: 1 };
+            container.imageState = { x: 0 };
             updateImageTransform(container);
         }
     </script>
