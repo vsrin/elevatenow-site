@@ -3,2632 +3,1396 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ElevateNow - Insurance Intelligence Platform</title>
+    <title>ElevateNow - Enterprise Insurance Intelligence Platform</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
-        body {
-            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: #0f172a;
-            overflow-x: hidden;
+        :root {
+            --primary: #0a0a0a;
+            --primary-light: #1a1a1a;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --text-primary: #0a0a0a;
+            --text-secondary: #525252;
+            --text-tertiary: #737373;
+            --bg-primary: #ffffff;
+            --bg-secondary: #fafafa;
+            --bg-tertiary: #f5f5f5;
+            --border: #e5e5e5;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-dark: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
         }
         
-        .header {
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Navigation */
+        .nav-container {
             position: fixed;
             top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
         }
         
-        .nav {
-            max-width: 1200px;
+        .nav-content {
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 0 24px;
+            height: 72px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
         }
         
         .logo {
-            font-size: 1.75rem;
+            font-size: 22px;
             font-weight: 800;
-            color: #0f172a;
-            letter-spacing: -0.02em;
-            cursor: pointer;
+            color: var(--primary);
             text-decoration: none;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo-mark {
+            width: 32px;
+            height: 32px;
+            background: var(--gradient-1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+            font-size: 18px;
         }
         
         .nav-menu {
             display: flex;
-            gap: 2.5rem;
+            align-items: center;
+            gap: 40px;
             list-style: none;
         }
         
         .nav-menu a {
+            color: var(--text-secondary);
             text-decoration: none;
-            color: #475569;
+            font-size: 15px;
             font-weight: 500;
-            font-size: 0.95rem;
             transition: color 0.2s ease;
+            position: relative;
         }
         
         .nav-menu a:hover {
-            color: #0f172a;
+            color: var(--primary);
         }
         
-        .nav-cta {
-            background: #0f172a;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.2s ease;
         }
         
-        .nav-cta:hover {
-            background: #1e293b;
-            transform: translateY(-1px);
+        .nav-menu a:hover::after {
+            transform: scaleX(1);
         }
         
-        .mobile-menu {
-            display: none;
-            background: none;
-            border: none;
-            color: #475569;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        .hero {
-            min-height: 100vh;
+        .nav-actions {
             display: flex;
             align-items: center;
-            background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
+            gap: 16px;
+        }
+        
+        .nav-btn {
+            padding: 10px 20px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .nav-btn-secondary {
+            color: var(--text-primary);
+            background: transparent;
+            border: 1px solid var(--border);
+        }
+        
+        .nav-btn-secondary:hover {
+            background: var(--bg-secondary);
+            border-color: var(--text-tertiary);
+        }
+        
+        .nav-btn-primary {
+            color: white;
+            background: var(--primary);
+            border: 1px solid var(--primary);
+        }
+        
+        .nav-btn-primary:hover {
+            background: var(--primary-light);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding-top: 120px;
+            padding-bottom: 80px;
+            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
             position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
         }
         
         .hero-content {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
         }
         
-        .hero-text h1 {
-            font-size: 4rem;
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .badge-text {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+        
+        .hero-title {
+            font-size: clamp(40px, 6vw, 72px);
             font-weight: 800;
             line-height: 1.1;
-            letter-spacing: -0.02em;
-            margin-bottom: 1.5rem;
-            color: #0f172a;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+            max-width: 900px;
         }
         
-        .hero-text .subtitle {
-            font-size: 1.25rem;
-            color: #475569;
-            margin-bottom: 2.5rem;
-            line-height: 1.5;
+        .gradient-text {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
-        .hero-cta {
+        .hero-subtitle {
+            font-size: 20px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin-bottom: 40px;
+        }
+        
+        .hero-actions {
             display: flex;
-            gap: 1rem;
+            gap: 16px;
             align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 14px 32px;
+            border-radius: 28px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            cursor: pointer;
         }
         
         .btn-primary {
-            background: #0f172a;
+            background: var(--primary);
             color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            display: inline-block;
         }
         
         .btn-primary:hover {
-            background: #1e293b;
+            background: var(--primary-light);
             transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
         }
         
         .btn-secondary {
-            color: #475569;
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: color 0.2s ease;
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--border);
         }
         
         .btn-secondary:hover {
-            color: #0f172a;
+            background: var(--bg-secondary);
+            border-color: var(--text-tertiary);
         }
         
         .hero-visual {
+            margin-top: 60px;
             position: relative;
-            height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         
-        .product-showcase {
-            width: 500px;
-            height: 350px;
+        .visual-container {
             background: white;
-            border-radius: 16px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-            border: 1px solid #e2e8f0;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             position: relative;
         }
         
-        .showcase-header {
-            height: 50px;
-            background: #f8fafc;
-            border-bottom: 1px solid #e2e8f0;
+        .visual-header {
+            background: var(--bg-secondary);
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
-            padding: 0 1.5rem;
             justify-content: space-between;
         }
         
-        .window-dots {
+        .window-controls {
             display: flex;
-            gap: 0.5rem;
+            gap: 8px;
         }
         
-        .dot {
+        .window-dot {
             width: 12px;
             height: 12px;
             border-radius: 50%;
         }
         
-        .dot.red { background: #ef4444; }
-        .dot.yellow { background: #f59e0b; }
-        .dot.green { background: #10b981; }
+        .dot-red { background: #ef4444; }
+        .dot-yellow { background: #f59e0b; }
+        .dot-green { background: #10b981; }
         
-        .showcase-title {
-            font-size: 0.9rem;
+        .visual-title {
+            font-size: 14px;
             font-weight: 600;
-            color: #475569;
+            color: var(--text-secondary);
         }
         
-        .product-carousel {
-            height: 300px;
+        .visual-content {
+            padding: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             position: relative;
             overflow: hidden;
         }
         
-        .product-slide {
+        .visual-animation {
             position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
-            opacity: 0;
-            transform: translateX(100%);
-            transition: all 0.8s ease-in-out;
         }
         
-        .product-slide.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        .product-slide.prev {
-            transform: translateX(-100%);
-        }
-        
-        .slide-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 1.5rem;
-        }
-        
-        .slide-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #0f172a;
-            text-align: center;
-        }
-        
-        .slide-description {
-            color: #475569;
-            text-align: center;
-            line-height: 1.6;
-        }
-        
-        .carousel-indicators {
+        .orbit {
             position: absolute;
-            bottom: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            animation: rotate 20s linear infinite;
+        }
+        
+        .orbit-1 { width: 200px; height: 200px; }
+        .orbit-2 { width: 300px; height: 300px; animation-duration: 30s; }
+        .orbit-3 { width: 400px; height: 400px; animation-duration: 40s; }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .orbit-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            top: -10px;
             left: 50%;
             transform: translateX(-50%);
-            display: flex;
-            gap: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
         
-        .indicator {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #cbd5e1;
-            cursor: pointer;
-            transition: background 0.3s ease;
+        .visual-text {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
         }
         
-        .indicator.active {
-            background: #3b82f6;
+        .visual-text h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
         }
         
-        .section {
-            padding: 6rem 0;
-            max-width: 1200px;
+        .visual-text p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        /* Trust Section */
+        .trust-section {
+            padding: 60px 0;
+            background: white;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .trust-content {
+            max-width: 1280px;
             margin: 0 auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
+            padding: 0 24px;
+            text-align: center;
+        }
+        
+        .trust-text {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 32px;
+        }
+        
+        .trust-logos {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            opacity: 0.6;
+            filter: grayscale(100%);
+        }
+        
+        .trust-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        
+        /* Features Section */
+        .features-section {
+            padding: 120px 0;
+            background: var(--bg-secondary);
         }
         
         .section-header {
+            max-width: 800px;
+            margin: 0 auto 80px;
             text-align: center;
-            margin-bottom: 4rem;
+            padding: 0 24px;
         }
         
         .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #0f172a;
-            letter-spacing: -0.02em;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
         }
         
         .section-subtitle {
-            font-size: 1.125rem;
-            color: #475569;
-            max-width: 600px;
-            margin: 0 auto;
+            font-size: 18px;
+            color: var(--text-secondary);
+            line-height: 1.6;
         }
         
         .features-grid {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
         }
         
         .feature-card {
             background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .feature-card:hover {
-            border-color: #cbd5e1;
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .feature-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            font-weight: 600;
-            color: white;
-        }
-        
-        .icon-orange { background: linear-gradient(135deg, #f97316, #ea580c); }
-        .icon-blue { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
-        .icon-purple { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
-        
-        .feature-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            color: #0f172a;
-        }
-        
-        .feature-description {
-            color: #475569;
-            line-height: 1.6;
-        }
-        
-        .products-section {
-            background: #f8fafc;
-            padding: 4rem 0;
-        }
-        
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .product-card {
-            background: white;
-            border-radius: 16px;
-            padding: 0;
-            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 40px 32px;
+            border: 1px solid var(--border);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
         
-        .product-card::before {
+        .feature-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
         
-        .product-card:hover {
+        .feature-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
         
-        .product-header {
-            padding: 2rem 2rem 1rem;
-            text-align: center;
+        .feature-card:hover::before {
+            transform: scaleX(1);
         }
         
-        .product-visual {
-            height: 180px;
-            background: #f8fafc;
-            margin: 0 2rem 1.5rem;
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--bg-secondary);
             border-radius: 12px;
-            border: 1px solid #e2e8f0;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-bottom: 24px;
+            font-size: 24px;
+        }
+        
+        .feature-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .feature-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        /* Products Section */
+        .products-section {
+            padding: 120px 0;
+            background: white;
+        }
+        
+        .products-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .product-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-bottom: 120px;
+        }
+        
+        .product-showcase:nth-child(even) {
+            direction: rtl;
+        }
+        
+        .product-showcase:nth-child(even) > * {
+            direction: ltr;
+        }
+        
+        .product-content {
+            max-width: 500px;
+        }
+        
+        .product-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+        
+        .product-badge-text {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+        }
+        
+        .product-title {
+            font-size: 40px;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+        
+        .product-description {
+            font-size: 18px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+        
+        .product-features {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+        
+        .product-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .feature-check {
+            width: 24px;
+            height: 24px;
+            background: var(--bg-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        .product-feature-text {
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        
+        .product-visual {
+            position: relative;
+        }
+        
+        .product-image {
+            background: var(--gradient-1);
+            border-radius: 24px;
+            padding: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
             position: relative;
             overflow: hidden;
         }
         
-        .product-screenshot {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 12px;
-        }
-        
-        .product-content {
-            padding: 0 2rem 2rem;
-        }
-        
-        .product-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            color: #0f172a;
-        }
-        
-        .product-subtitle {
-            color: #475569;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-        
-        .product-description {
-            color: #64748b;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            font-size: 0.9rem;
-        }
-        
-        .product-link {
-            color: #3b82f6;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: color 0.2s ease;
-        }
-        
-        .product-link:hover {
-            color: #1d4ed8;
-        }
-        
-        .stats-section {
-            background: #0f172a;
+        .product-image-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
             color: white;
-            padding: 6rem 0;
+        }
+        
+        .product-image-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .product-image-subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            padding: 80px 0;
+            background: var(--primary);
+            color: white;
+        }
+        
+        .stats-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
         
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
+            gap: 60px;
             text-align: center;
-            margin-top: 3rem;
         }
         
-        .stat {
-            padding: 1rem;
+        .stat-item {
+            position: relative;
         }
         
         .stat-number {
-            font-size: 3rem;
+            font-size: 48px;
             font-weight: 800;
-            color: #3b82f6;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.02em;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .stat-label {
-            color: #cbd5e1;
-            font-weight: 500;
+            font-size: 16px;
+            opacity: 0.8;
         }
         
-        .product-detail-section {
-            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
-            padding: 6rem 0;
-        }
-        
-        .product-detail-section:nth-child(even) {
-            background: white;
-        }
-        
-        .product-detail-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        .detail-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        
-        .detail-header h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #0f172a;
-        }
-        
-        .detail-subtitle {
-            font-size: 1.25rem;
-            color: #475569;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .detail-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-        
-        .detail-text h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #0f172a;
-        }
-        
-        .detail-text p {
-            color: #475569;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-        }
-        
-        .feature-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-        
-        .feature-item {
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-        }
-        
-        .feature-item .feature-icon {
-            font-size: 1.5rem;
-            padding: 0.5rem;
-            background: #f1f5f9;
-            border-radius: 8px;
-            flex-shrink: 0;
-            width: auto;
-            height: auto;
-        }
-        
-        .feature-item strong {
-            color: #0f172a;
-            font-weight: 600;
-            display: block;
-            margin-bottom: 0.25rem;
-        }
-        
-        .feature-item p {
-            color: #64748b;
-            margin: 0;
-            font-size: 0.9rem;
-        }
-        
-        .agent-categories {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .category-item {
-            background: #f8fafc;
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-        }
-        
-        .category-item strong {
-            color: #0f172a;
-            font-weight: 600;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        
-        .category-item p {
-            color: #64748b;
-            font-size: 0.9rem;
-            margin: 0;
-        }
-        
-        .hub-capabilities {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-        
-        .capability-section h4 {
-            color: #0f172a;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .capability-section ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .capability-section li {
-            color: #475569;
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
+        /* CTA Section */
+        .cta-section {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             position: relative;
-            font-size: 0.9rem;
-        }
-        
-        .capability-section li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #10b981;
-            font-weight: 600;
-        }
-        
-        .tech-specs {
-            background: #f8fafc;
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-            margin-top: 2rem;
-        }
-        
-        .tech-specs h4 {
-            color: #0f172a;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
-        
-        .tech-specs p {
-            color: #475569;
-            font-size: 0.9rem;
-            margin: 0;
-        }
-        
-        .detail-visual {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-        }
-        
-        .screenshot-container {
-            width: 100%;
-            height: 500px;
-            background: white;
-            border-radius: 20px;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
             overflow: hidden;
-            position: relative;
-            cursor: grab;
-        }
-
-        .screenshot-container:active {
-            cursor: grabbing;
-        }
-
-        .detail-screenshot {
-            width: 120%;
-            height: 120%;
-            object-fit: contain;
-            border-radius: 20px;
-            transition: transform 0.3s ease;
-            transform-origin: center center;
-            user-select: none;
-            pointer-events: none;
         }
         
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .resource-category {
-            background: white;
-            border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
-        }
-        
-        .resource-category:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .resource-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        
-        .resource-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 12px;
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: white;
-            background: linear-gradient(135deg, #64748b, #475569);
-        }
-        
-        .resource-header h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: #0f172a;
-        }
-        
-        .resource-header p {
-            color: #475569;
-            font-size: 0.9rem;
-        }
-        
-        .resource-links {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .resource-link {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem;
-            background: #f8fafc;
-            border-radius: 8px;
-            text-decoration: none;
-            color: #0f172a;
-            transition: all 0.2s ease;
-            border: 1px solid transparent;
-        }
-        
-        .resource-link:hover {
-            background: #f1f5f9;
-            border-color: #e2e8f0;
-            transform: translateX(4px);
-        }
-        
-        .resource-link span:first-child {
-            font-weight: 500;
-            font-size: 0.9rem;
-            line-height: 1.4;
-        }
-        
-        .link-arrow {
-            color: #3b82f6;
-            font-weight: 600;
-            opacity: 0.7;
-            transition: opacity 0.2s ease;
-        }
-        
-        .resource-link:hover .link-arrow {
-            opacity: 1;
-        }
-        
-        .view-all-link {
-            color: #3b82f6;
-            text-decoration: none;
-            font-weight: 600;
-            text-align: center;
-            display: block;
-            padding: 0.75rem;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-        }
-        
-        .view-all-link:hover {
-            background: #f8fafc;
-            border-color: #3b82f6;
-        }
-        
-        .about-synopsis {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .about-synopsis h3 {
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-synopsis p {
-            font-size: 1.125rem;
-            color: #475569;
-            line-height: 1.7;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .bio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .bio-card {
-            background: white;
-            border-radius: 16px;
-            padding: 1.5rem;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
-        }
-
-        .bio-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .bio-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .bio-initials {
-            width: 50px;
-            height: 50px;
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
             border-radius: 50%;
-            background: linear-gradient(135deg, #0f172a, #334155);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1rem;
-            flex-shrink: 0;
-        }
-
-        .bio-name {
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 0.25rem;
-        }
-
-        .bio-title {
-            color: #3b82f6;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .bio-content {
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: #475569;
-        }
-
-        .bio-content div {
-            margin-bottom: 0.5rem;
-        }
-
-        .collective-impact {
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-            color: white;
-            padding: 3rem;
-            border-radius: 20px;
-            text-align: center;
-        }
-
-        .collective-impact h3 {
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: #f8fafc;
-        }
-
-        .collective-impact p {
-            font-size: 1.125rem;
-            line-height: 1.7;
-            color: #cbd5e1;
-            max-width: 800px;
-            margin: 0 auto;
         }
         
         .cta-content {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
+            padding: 0 24px;
             text-align: center;
+            position: relative;
+            z-index: 1;
         }
         
         .cta-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #0f172a;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+            color: white;
         }
         
         .cta-subtitle {
-            font-size: 1.125rem;
-            color: #475569;
-            margin-bottom: 2.5rem;
+            font-size: 20px;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.9);
         }
         
-        .cta-buttons {
+        .cta-actions {
             display: flex;
-            gap: 1rem;
+            gap: 16px;
             justify-content: center;
             flex-wrap: wrap;
         }
         
-        .product-nav {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
+        .btn-white {
             background: white;
-            border-radius: 50px;
-            padding: 0.75rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            border: 1px solid #e2e8f0;
-            z-index: 1000;
-            display: flex;
-            gap: 0.5rem;
+            color: var(--accent);
         }
         
-        .product-nav-item {
+        .btn-white:hover {
+            background: var(--bg-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-outline-white {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-outline-white:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: white;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-brand {
+            max-width: 300px;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .footer-description {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .social-link {
             width: 40px;
             height: 40px;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #f8fafc;
-            color: #475569;
+            color: white;
             text-decoration: none;
             transition: all 0.2s ease;
-            font-size: 16px;
         }
         
-        .product-nav-item:hover,
-        .product-nav-item.active {
-            background: #0f172a;
-            color: white;
-            transform: scale(1.1);
+        .social-link:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
         }
-
-        /* Demo Request Page Styles */
-        .demo-page {
-            display: none;
-            min-height: 100vh;
-            background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
-            padding-top: 6rem;
-        }
-
-        .demo-page.active {
-            display: block;
-        }
-
-        .demo-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .demo-form-section {
-            background: white;
-            border-radius: 20px;
-            padding: 3rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            border: 1px solid #e2e8f0;
-        }
-
-        .demo-info-section {
-            padding: 2rem 0;
-        }
-
-        .demo-form-header {
-            margin-bottom: 3rem;
-        }
-
-        .demo-form-header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .demo-form-header p {
-            color: #475569;
-            font-size: 1.125rem;
-            line-height: 1.6;
-        }
-
-        .form-steps {
-            display: flex;
-            align-items: center;
-            margin-bottom: 3rem;
-            gap: 1rem;
-        }
-
-        .step {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            flex: 1;
-        }
-
-        .step-number {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        
+        .footer-column h4 {
+            font-size: 14px;
             font-weight: 600;
-            font-size: 0.9rem;
-            border: 2px solid #e2e8f0;
-            color: #94a3b8;
-            background: white;
-            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            opacity: 0.9;
         }
-
-        .step-number.active {
-            background: #6366f1;
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .footer-links a:hover {
             color: white;
-            border-color: #6366f1;
         }
-
-        .step-number.completed {
-            background: #10b981;
-            color: white;
-            border-color: #10b981;
-        }
-
-        .step-title {
-            font-weight: 600;
-            color: #64748b;
-            font-size: 0.9rem;
-        }
-
-        .step-title.active {
-            color: #0f172a;
-        }
-
-        .step-connector {
-            flex: 1;
-            height: 2px;
-            background: #e2e8f0;
-            margin: 0 1rem;
-        }
-
-        .step-connector.completed {
-            background: #10b981;
-        }
-
-        .form-content {
-            margin-bottom: 2rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .form-label {
-            display: block;
-            font-weight: 600;
-            color: #374151;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 0.875rem 1rem;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: all 0.2s ease;
-            background: white;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: #6366f1;
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-        }
-
-        .form-select {
-            width: 100%;
-            padding: 0.875rem 1rem;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            font-size: 1rem;
-            background: white;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .form-select:focus {
-            outline: none;
-            border-color: #6366f1;
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-        }
-
-        .form-actions {
+        
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 1rem;
-        }
-
-        .btn-back {
-            background: none;
-            border: none;
-            color: #6366f1;
-            font-weight: 600;
-            padding: 0.75rem 1.5rem;
-            cursor: pointer;
-            transition: color 0.2s ease;
-        }
-
-        .btn-back:hover {
-            color: #4f46e5;
-        }
-
-        .btn-back:disabled {
-            color: #9ca3af;
-            cursor: not-allowed;
-        }
-
-        .btn-next {
-            background: #6366f1;
-            color: white;
-            border: none;
-            padding: 0.875rem 2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .btn-next:hover {
-            background: #4f46e5;
-            transform: translateY(-1px);
-        }
-
-        .btn-next:disabled {
-            background: #d1d5db;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .info-card {
-            background: white;
-            border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid #e2e8f0;
-            margin-bottom: 2rem;
-        }
-
-        .info-card h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 1rem;
-        }
-
-        .info-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .info-list li {
-            padding: 0.5rem 0;
-            color: #475569;
-            font-size: 0.95rem;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        .info-list li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: #6366f1;
-            font-weight: bold;
-        }
-
-        .contact-info {
-            background: #f8fafc;
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .contact-info h4 {
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: #0f172a;
-            margin-bottom: 0.75rem;
-        }
-
-        .contact-info p {
-            color: #64748b;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 1rem;
-        }
-
-        .contact-btn {
-            background: #6366f1;
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .contact-btn:hover {
-            background: #4f46e5;
-            transform: translateY(-1px);
-        }
-
-        .form-step {
-            display: none;
-        }
-
-        .form-step.active {
-            display: block;
+            flex-wrap: wrap;
+            gap: 20px;
         }
         
-        /* Mobile Responsive Styles */
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+        
+        .footer-legal {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+        
+        .footer-legal a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+        
+        .footer-legal a:hover {
+            color: white;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+        
+        .hamburger {
+            width: 24px;
+            height: 20px;
+            position: relative;
+        }
+        
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+            position: absolute;
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger span:nth-child(1) { top: 0; }
+        .hamburger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+        .hamburger span:nth-child(3) { bottom: 0; }
+        
+        /* Responsive */
         @media (max-width: 1024px) {
-            .section {
-                padding: 4rem 0;
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
+            .product-showcase {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
             
-            .hero-content {
-                padding: 0 1.5rem;
-                gap: 3rem;
+            .product-showcase:nth-child(even) {
+                direction: ltr;
             }
             
-            .detail-grid {
-                gap: 3rem;
-            }
-            
-            .demo-container {
-                padding: 1.5rem;
-                gap: 3rem;
-            }
-            
-            .demo-form-section {
-                padding: 2rem;
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
             }
         }
         
         @media (max-width: 768px) {
-            .nav {
-                padding: 1rem;
-            }
-            
-            .logo {
-                font-size: 1.5rem;
-            }
-            
             .nav-menu {
                 display: none;
             }
             
-            .mobile-menu {
+            .mobile-menu-btn {
                 display: block;
             }
             
-            .nav-cta {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.85rem;
+            .nav-actions .nav-btn-secondary {
+                display: none;
             }
             
-            .hero {
-                min-height: 80vh;
-                padding-top: 4rem;
+            .hero-title {
+                font-size: clamp(32px, 8vw, 48px);
             }
             
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 2rem;
-                padding: 0 1rem;
+            .hero-subtitle {
+                font-size: 18px;
             }
             
-            .hero-text h1 {
-                font-size: 2.5rem;
-                line-height: 1.2;
-            }
-            
-            .hero-text .subtitle {
-                font-size: 1.1rem;
-                margin-bottom: 2rem;
-            }
-            
-            .hero-cta {
+            .hero-actions {
                 flex-direction: column;
-                gap: 1rem;
-                align-items: center;
+                align-items: stretch;
             }
             
-            .btn-primary {
-                padding: 0.875rem 1.75rem;
-                width: auto;
-                min-width: 200px;
+            .btn {
+                justify-content: center;
             }
             
-            .hero-visual {
-                height: 300px;
-                order: -1;
-            }
-            
-            .product-showcase {
-                width: 100%;
-                max-width: 350px;
-                height: 280px;
-            }
-            
-            .slide-title {
-                font-size: 1.25rem;
-            }
-            
-            .slide-description {
-                font-size: 0.9rem;
-            }
-            
-            .section {
-                padding: 3rem 0;
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-                line-height: 1.2;
-            }
-            
-            .section-subtitle {
-                font-size: 1rem;
+            .trust-logos {
+                gap: 30px;
             }
             
             .features-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
-            .feature-card {
-                padding: 1.5rem;
-            }
-            
-            .product-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
-            .resources-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
-            .resource-category {
-                padding: 1.5rem;
             }
             
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
+                gap: 40px;
             }
             
-            .stat-number {
-                font-size: 2.5rem;
-            }
-            
-            .detail-grid {
+            .footer-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 30px;
             }
             
-            .detail-header h2 {
-                font-size: 2rem;
-            }
-            
-            .detail-subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .agent-categories {
-                grid-template-columns: 1fr;
-            }
-            
-            .bio-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .bio-card {
-                padding: 1.25rem;
-            }
-            
-            .about-synopsis {
-                padding: 2rem;
-            }
-            
-            .about-synopsis h3 {
-                font-size: 1.5rem;
-            }
-            
-            .about-synopsis p {
-                font-size: 1rem;
-            }
-            
-            .collective-impact {
-                padding: 2rem;
-            }
-            
-            .collective-impact h3 {
-                font-size: 1.5rem;
-            }
-            
-            .collective-impact p {
-                font-size: 1rem;
-            }
-            
-            .cta-title {
-                font-size: 2rem;
-                line-height: 1.2;
-            }
-            
-            .cta-subtitle {
-                font-size: 1rem;
-            }
-            
-            .cta-buttons {
+            .footer-bottom {
                 flex-direction: column;
                 align-items: center;
-            }
-            
-            .product-nav {
-                bottom: 1rem;
-                right: 1rem;
-                flex-direction: column;
-                padding: 0.5rem;
-            }
-            
-            .demo-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                padding: 1rem;
-            }
-            
-            .demo-form-section {
-                padding: 1.5rem;
-            }
-            
-            .demo-form-header h1 {
-                font-size: 2rem;
-            }
-            
-            .demo-form-header p {
-                font-size: 1rem;
-            }
-            
-            .form-steps {
-                flex-direction: column;
-                gap: 1rem;
-                margin-bottom: 2rem;
-            }
-            
-            .step {
-                width: 100%;
-                justify-content: flex-start;
-            }
-            
-            .step-connector {
-                display: none;
-            }
-            
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-            
-            .form-actions {
-                flex-direction: column-reverse;
-                gap: 1rem;
-            }
-            
-            .btn-next,
-            .btn-back {
-                width: 100%;
                 text-align: center;
-            }
-            
-            .info-card {
-                padding: 1.5rem;
-            }
-
-            .screenshot-container {
-                height: 350px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero-text h1 {
-                font-size: 2rem;
-            }
-            
-            .hero-text .subtitle {
-                font-size: 1rem;
-            }
-            
-            .product-showcase {
-                max-width: 300px;
-                height: 250px;
-            }
-            
-            .showcase-header {
-                padding: 0 1rem;
-            }
-            
-            .showcase-title {
-                font-size: 0.8rem;
-            }
-            
-            .product-slide {
-                padding: 1.5rem;
-            }
-            
-            .slide-title {
-                font-size: 1.125rem;
-            }
-            
-            .section-title {
-                font-size: 1.75rem;
-            }
-            
-            .feature-card {
-                padding: 1.25rem;
-            }
-            
-            .feature-title {
-                font-size: 1.125rem;
-            }
-            
-            .product-header {
-                padding: 1.5rem 1.5rem 0.75rem;
-            }
-            
-            .product-content {
-                padding: 0 1.5rem 1.5rem;
-            }
-            
-            .product-visual {
-                margin: 0 1.5rem 1rem;
-                height: 150px;
-            }
-            
-            .detail-header h2 {
-                font-size: 1.75rem;
-            }
-            
-            .detail-text h3 {
-                font-size: 1.25rem;
-            }
-            
-            .screenshot-container {
-                height: 300px;
-            }
-            
-            .cta-title {
-                font-size: 1.75rem;
-            }
-            
-            .demo-form-header h1 {
-                font-size: 1.75rem;
-            }
-            
-            .step-title {
-                font-size: 0.8rem;
-            }
-            
-            .form-input,
-            .form-select {
-                padding: 0.75rem;
             }
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <nav class="nav">
-            <a href="#" class="logo" onclick="scrollToTop()">ElevateNow</a>
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav-content">
+            <a href="#" class="logo">
+                <div class="logo-mark">E</div>
+                ElevateNow
+            </a>
+            
             <ul class="nav-menu">
-                <li><a href="#why-elevatenow">Why ElevateNow</a></li>
                 <li><a href="#products">Products</a></li>
-                <li><a href="#built-for-insurance">Solutions</a></li>
-                <li><a href="#about-us">About Us</a></li>
+                <li><a href="#solutions">Solutions</a></li>
+                <li><a href="#platform">Platform</a></li>
                 <li><a href="#resources">Resources</a></li>
+                <li><a href="#company">Company</a></li>
             </ul>
-            <button class="mobile-menu">☰</button>
-            <button class="nav-cta" onclick="showDemoPage()">Get Started</button>
-        </nav>
-    </header>
-
-    <!-- Main Website Content -->
-    <div id="main-content">
-
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Insurance intelligence that scales</h1>
-                <p class="subtitle">The industry's only agentic-native platform for Insurance vertical. While your competitors struggle with retrofitted AI solutions, you'll operate on an architecture designed from the ground up to transform commercial insurance.</p>
-                <div class="hero-cta">
-                    <a href="#demo" class="btn-primary">See it in action</a>
-                    <a href="#learn" class="btn-secondary">Learn more →</a>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="product-showcase">
-                    <div class="showcase-header">
-                        <div class="window-dots">
-                            <div class="dot red"></div>
-                            <div class="dot yellow"></div>
-                            <div class="dot green"></div>
-                        </div>
-                        <div class="showcase-title">Agentium Intelligence Studio</div>
-                    </div>
-                    <div class="product-carousel">
-                        <div class="product-slide active">
-                            <h3 class="slide-title" style="color: #ea580c;">CLEAR360 - Intake Automation</h3>
-                            <p style="font-size: 0.9rem; font-style: italic; color: #64748b; margin-bottom: 1rem;">Purpose-Built Launchpads</p>
-                            <p class="slide-description">Carrier-certified workflow blueprints that deploy in days. CLEARNOW360 transforms submission intake from 30+ day cycles to real-time intelligence.</p>
-                        </div>
-                        <div class="product-slide">
-                            <h3 class="slide-title" style="color: #1d4ed8;">Agentium Intelligence</h3>
-                            <p style="font-size: 0.9rem; font-style: italic; color: #64748b; margin-bottom: 1rem;">40+ vertical agents for insurance workflows</p>
-                            <p class="slide-description">Deploy anywhere with built-in compliance adaptation to regulatory changes.</p>
-                        </div>
-                        <div class="product-slide">
-                            <h3 class="slide-title" style="color: #7c3aed;">Asurisk AI Hub</h3>
-                            <p style="font-size: 0.9rem; font-style: italic; color: #64748b; margin-bottom: 1rem;">Unified AI operations command center</p>
-                            <p class="slide-description">360° compliance visibility across all initiatives and systems.</p>
-                        </div>
-                        <div class="carousel-indicators">
-                            <div class="indicator active"></div>
-                            <div class="indicator"></div>
-                            <div class="indicator"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="why-elevatenow">
-        <!-- Company Belief -->
-        <div style="background: white; border-radius: 20px; padding: 2.5rem 0; border: 1px solid #e2e8f0; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08); margin-bottom: 3rem; text-align: center;">
-            <div style="max-width: 1000px; margin: 0 auto; padding: 0 2rem;">
-                <h3 style="font-size: 1.75rem; font-weight: 700; color: #0f172a; margin-bottom: 1.5rem;">What We Believe</h3>
-                <p style="font-size: 1.25rem; color: #475569; line-height: 1.7; margin: 0 auto 2rem;">
-                    Insurance transformation demands more than adding AI features to legacy systems. The industry needs a fundamental architectural rethinking—one where intelligence isn't bolted on as an afterthought, but embedded as the foundation. We believe carriers deserve platforms built from day one for agents, not humans.
-                </p>
-                <p style="font-size: 1.125rem; color: #0f172a; font-weight: 600; font-style: italic;">
-                    "The future belongs to those who build for intelligence, not those who retrofit it."
-                </p>
-            </div>
-        </div>
-
-        <!-- Visual Transformation -->
-        <div style="background: white; border-radius: 20px; padding: 2.5rem 0; border: 1px solid #e2e8f0; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08); margin-bottom: 3rem;">
-            <div style="max-width: 1100px; margin: 0 auto; padding: 0 2rem;">
-                <div style="text-align: center; margin-bottom: 2.5rem;">
-                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #0f172a; margin-bottom: 0.5rem;">The Architectural Transformation</h3>
-                    <p style="color: #64748b; font-size: 1rem;">From fragmented retrofitting to unified intelligence</p>
-                </div>
-
-                <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 2.5rem; align-items: center;">
-                    <!-- Current State -->
-                    <div style="text-align: center;">
-                        <div style="font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; color: #64748b;">Current State</div>
-                        <h4 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; color: #0f172a;">Retrofitted AI</h4>
-                        
-                        <div style="height: 280px; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem;">
-                            <div style="flex: 1; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 600; background: #f1f5f9; color: #64748b; border: 2px solid #cbd5e1;">Human-Centric UI</div>
-                            <div style="flex: 1; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 600; background: #e2e8f0; color: #475569; border: 2px solid #94a3b8;">Rigid Business Logic</div>
-                            <div style="flex: 1; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 600; background: #f8fafc; color: #64748b; border: 2px solid #e2e8f0;">Legacy Core Systems</div>
-                            <div style="flex: 1; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 600; background: #fef2f2; color: #dc2626; border: 2px dashed #fca5a5; position: relative;">
-                                AI Features
-                                <span style="position: absolute; top: -8px; right: -8px; background: #dc2626; color: white; font-size: 0.6rem; padding: 3px 8px; border-radius: 4px; font-weight: 700;">RETROFITTED</span>
-                            </div>
-                        </div>
-                        
-                        <div style="padding: 1rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; text-align: center; background: #fef2f2; color: #dc2626; border: 1px solid #fca5a5;">
-                            30-day cycles • 70% administrative overhead
-                        </div>
-                    </div>
-
-                    <!-- Transform Arrow -->
-                    <div style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem;">
-                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #0f172a, #334155); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold; box-shadow: 0 8px 25px rgba(15, 23, 42, 0.3);">→</div>
-                        <div style="font-size: 0.7rem; font-weight: 700; color: #0f172a; text-transform: uppercase; letter-spacing: 0.1em;">Transforms</div>
-                    </div>
-
-                    <!-- Target State -->
-                    <div style="text-align: center;">
-                        <div style="font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; color: #64748b;">Target State</div>
-                        <h4 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; color: #0f172a;">Agentic-First Platform</h4>
-                        
-                        <div style="height: 280px; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem;">
-                            <div style="flex: 1; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 600; background: linear-gradient(135deg, #0f172a, #1e293b); color: white;">AI Agent Orchestration</div>
-                            <div style="flex: 1; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 600; background: linear-gradient(135deg, #1e293b, #334155); color: white;">Embedded Intelligence</div>
-                            <div style="flex: 1; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 600; background: linear-gradient(135deg, #334155, #475569); color: white;">Adaptive Workflows</div>
-                            <div style="flex: 1; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 600; background: linear-gradient(135deg, #475569, #64748b); color: white; position: relative;">
-                                Built-in Governance
-                                <span style="position: absolute; top: -8px; right: -8px; background: #0f172a; color: white; font-size: 0.6rem; padding: 3px 8px; border-radius: 4px; font-weight: 700;">NATIVE</span>
-                            </div>
-                        </div>
-                        
-                        <div style="padding: 1rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; text-align: center; background: #f0f9ff; color: #1e40af; border: 1px solid #93c5fd;">
-                            Real-time decisions • 50% faster processing
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Differentiators -->
-        <div style="background: white; border-radius: 20px; padding: 2.5rem 0; border: 1px solid #e2e8f0; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08); margin-bottom: 3rem;">
-            <div style="max-width: 1100px; margin: 0 auto; padding: 0 2rem;">
-                <div style="text-align: center; margin-bottom: 2.5rem;">
-                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #0f172a; margin-bottom: 0.75rem;">What Makes Us Different</h3>
-                    <p style="color: #64748b; font-size: 1rem;">Three fundamental advantages that create lasting competitive moats</p>
-                </div>
-
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
-                    <div style="text-align: center; padding: 2rem; border: 1px solid #e2e8f0; border-radius: 16px; transition: all 0.3s ease;">
-                        <div style="width: 60px; height: 60px; background: #0f172a; color: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin: 0 auto 1.5rem;">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z"/>
-                                <path d="M19 15L20.09 17.26L23 18L20.09 18.74L19 21L17.91 18.74L15 18L17.91 17.26L19 15Z"/>
-                                <path d="M5 9L6.09 11.26L9 12L6.09 12.74L5 15L3.91 12.74L1 12L3.91 11.26L5 9Z"/>
-                            </svg>
-                        </div>
-                        <h4 style="font-size: 1.125rem; font-weight: 700; color: #0f172a; margin-bottom: 1rem;">Cross-Platform Intelligence</h4>
-                        <p style="color: #64748b; font-size: 0.95rem; line-height: 1.6;">ServiceNow, Guidewire, and legacy systems orchestrated as one unified platform. Our agents span systems, not silos.</p>
-                    </div>
-
-                    <div style="text-align: center; padding: 2rem; border: 1px solid #e2e8f0; border-radius: 16px; transition: all 0.3s ease;">
-                        <div style="width: 60px; height: 60px; background: #0f172a; color: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin: 0 auto 1.5rem;">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M9 12L11 14L15 10M12 3C16.97 3 21 7.03 21 12C21 17 16.97 21 12 21C7 21 3 17 3 12C3 7.03 7 3 12 3Z"/>
-                            </svg>
-                        </div>
-                        <h4 style="font-size: 1.125rem; font-weight: 700; color: #0f172a; margin-bottom: 1rem;">Insurance-Native AI</h4>
-                        <p style="color: #64748b; font-size: 0.95rem; line-height: 1.6;">40+ specialized agents understand ACORD forms, NAIC codes, and carrier appetites from day one.</p>
-                    </div>
-
-                    <div style="text-align: center; padding: 2rem; border: 1px solid #e2e8f0; border-radius: 16px; transition: all 0.3s ease;">
-                        <div style="width: 60px; height: 60px; background: #0f172a; color: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin: 0 auto 1.5rem;">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1M10 17L6 13L7.41 11.59L10 14.17L16.59 7.58L18 9L10 17Z"/>
-                            </svg>
-                        </div>
-                        <h4 style="font-size: 1.125rem; font-weight: 700; color: #0f172a; margin-bottom: 1rem;">Governance at Scale</h4>
-                        <p style="color: #64748b; font-size: 0.95rem; line-height: 1.6;">42 regulatory requirements monitored automatically. Compliance that grows with your AI ambitions.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Closing Tagline -->
-        <div style="background: linear-gradient(135deg, #0f172a, #1e293b); color: white; padding: 3rem 0; border-radius: 20px; text-align: center;">
-            <div style="max-width: 800px; margin: 0 auto; padding: 0 2rem;">
-                <h3 style="font-size: 2.25rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; color: #f8fafc;">Scaling AI infrastructure for tomorrow's carriers</h3>
-            </div>
-        </div>
-    </section>
-
-    <section class="products-section" id="products">
-        <div class="section">
-            <div class="section-header">
-                <h2 class="section-title">Complete insurance intelligence platform</h2>
-                <p class="section-subtitle">Purpose-built solutions that work together or standalone</p>
+            
+            <div class="nav-actions">
+                <a href="#" class="nav-btn nav-btn-secondary">Sign In</a>
+                <a href="#" class="nav-btn nav-btn-primary">Get Started</a>
             </div>
             
-            <div class="product-grid">
-                <div class="product-card" onclick="scrollToSection('#launchpads-detail')">
-                    <div class="product-header">
-                        <h3 class="product-title" style="color: #ea580c;">CLEAR360 - Intake Automation</h3>
-                        <p class="product-subtitle" style="font-size: 0.85rem; font-style: italic;">Purpose-Built Launchpads</p>
-                    </div>
-                    <div class="product-visual">
-                        <img src="images/launchpad2.png" alt="CLEAR360 Dashboard" class="product-screenshot">
-                    </div>
-                    <div class="product-content">
-                        <p class="product-description">Transform submission intake from 30+ day email cycles to real-time intelligence. ServiceNow-certified with automated validation across multiple sources and 3rd party databases.</p>
-                        <a href="#launchpads-detail" class="product-link" onclick="event.stopPropagation()">Explore Launchpads →</a>
-                    </div>
+            <button class="mobile-menu-btn">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
-                <div class="product-card" onclick="scrollToSection('#agentium-detail')">
-                    <div class="product-header">
-                        <h3 class="product-title" style="color: #1d4ed8;">Agentium Intelligence</h3>
-                        <p class="product-subtitle" style="font-size: 0.85rem; font-style: italic;">40+ vertical agents for insurance workflows</p>
-                    </div>
-                    <div class="product-visual">
-                        <img src="images/agentium2.png" alt="Agentium Intelligence Interface" class="product-screenshot">
-                    </div>
-                    <div class="product-content">
-                        <p class="product-description">From ACORDFormsExpert to ClaimsIntelligencePro - deploy specialized agents with built-in compliance. No-code workflow development with enterprise security.</p>
-                        <a href="#agentium-detail" class="product-link" onclick="event.stopPropagation()">Explore Agents →</a>
-                    </div>
-                </div>
-                <div class="product-card" onclick="scrollToSection('#asurisk-detail')">
-                    <div class="product-header">
-                        <h3 class="product-title" style="color: #7c3aed;">Asurisk AI Hub</h3>
-                        <p class="product-subtitle" style="font-size: 0.85rem; font-style: italic;">Unified AI operations command center</p>
-                    </div>
-                    <div class="product-visual">
-                        <img src="images/asurisk2.png" alt="Asurisk AI Hub Dashboard" class="product-screenshot">
-                    </div>
-                    <div class="product-content">
-                        <p class="product-description">360° compliance visibility across all AI initiatives. Automated audits, continuous monitoring, and dynamic guardrails ensure regulatory adherence across jurisdictions.</p>
-                        <a href="#asurisk-detail" class="product-link" onclick="event.stopPropagation()">Explore Hub →</a>
-                    </div>
-                </div>
-            </div>
+            </button>
         </div>
-    </section>
-
-    <section class="section product-detail-section" id="launchpads-detail">
-        <div class="product-detail-container">
-            <div class="product-detail-content">
-                <div class="detail-header">
-                    <h2>Purpose-Built Launchpads</h2>
-                    <p class="detail-subtitle">Carrier-certified workflow blueprints that transform operations in days, not months</p>
-                </div>
-                
-                <div class="detail-grid">
-                    <div class="detail-text">
-                        <h3>CLEARNOW360: Submission Intelligence Platform</h3>
-                        <p>Transform submission intake from email chaos to intelligent automation. Built on ServiceNow with deep insurance domain expertise.</p>
-                        
-                        <div class="feature-list">
-                            <div class="feature-item">
-                                <span class="feature-icon">⚡</span>
-                                <div>
-                                    <strong>40-60% faster processing</strong>
-                                    <p>Redirect underwriters from administrative tasks to strategic risk assessment</p>
-                                </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span class="badge-text">Enterprise-Ready Insurance AI</span>
+            </div>
+            
+            <h1 class="hero-title">
+                The all-in-one platform<br>
+                for <span class="gradient-text">intelligent insurance</span>
+            </h1>
+            
+            <p class="hero-subtitle">
+                Transform your insurance operations with cutting-edge AI agents, automated workflows, and enterprise-grade compliance — all within a single, secure platform built specifically for carriers.
+            </p>
+            
+            <div class="hero-actions">
+                <a href="#" class="btn btn-primary">
+                    Start Free Trial
+                    <span>→</span>
+                </a>
+                <a href="#" class="btn btn-secondary">
+                    Watch Demo
+                </a>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="visual-container">
+                    <div class="visual-header">
+                        <div class="window-controls">
+                            <span class="window-dot dot-red"></span>
+                            <span class="window-dot dot-yellow"></span>
+                            <span class="window-dot dot-green"></span>
+                        </div>
+                        <span class="visual-title">Agentium Intelligence Studio</span>
+                        <span></span>
+                    </div>
+                    <div class="visual-content">
+                        <div class="visual-animation">
+                            <div class="orbit orbit-1">
+                                <span class="orbit-dot"></span>
                             </div>
-                            <div class="feature-item">
-                                <span class="feature-icon">🔍</span>
-                                <div>
-                                    <strong>Automated validation</strong>
-                                    <p>Cross-reference multiple sources and 3rd party databases in real-time</p>
-                                </div>
+                            <div class="orbit orbit-2">
+                                <span class="orbit-dot"></span>
                             </div>
-                            <div class="feature-item">
-                                <span class="feature-icon">📊</span>
-                                <div>
-                                    <strong>Risk appetite alignment</strong>
-                                    <p>Immediate eligibility screening with intelligent triage for "FAST NO" decisions</p>
-                                </div>
+                            <div class="orbit orbit-3">
+                                <span class="orbit-dot"></span>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="detail-visual">
-                        <div class="screenshot-container" id="screenshot-1">
-                            <img src="images/launchpad2.png" alt="CLEARNOW360 Detailed Interface" class="detail-screenshot">
+                        <div class="visual-text">
+                            <h3>AI-Powered Intelligence</h3>
+                            <p>40+ specialized agents working in harmony</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <section class="section product-detail-section" id="agentium-detail">
-        <div class="product-detail-container">
-            <div class="product-detail-content">
-                <div class="detail-header">
-                    <h2>Agentium Intelligence</h2>
-                    <p class="detail-subtitle">40+ vertical agents designed specifically for insurance workflows and compliance</p>
-                </div>
-                
-                <div class="detail-grid">
-                    <div class="detail-visual">
-                        <div class="screenshot-container" id="screenshot-2">
-                            <img src="images/agentium2.png" alt="Agentium Agent Catalog" class="detail-screenshot">
-                        </div>
-                    </div>
-                    
-                    <div class="detail-text">
-                        <h3>Pre-built Intelligence for Every Workflow</h3>
-                        <p>From ACORDFormsExpert to ClaimsIntelligencePro - deploy specialized agents with enterprise-grade security and built-in compliance.</p>
-                        
-                        <div class="agent-categories">
-                            <div class="category-item">
-                                <strong>Forms & Documentation</strong>
-                                <p>ACORDFormsExpert, DocumentExtractor, PolicySummarizer</p>
-                            </div>
-                            <div class="category-item">
-                                <strong>Risk & Analytics</strong>
-                                <p>ExposureInsights, LossInsights, EligibilityChecker</p>
-                            </div>
-                            <div class="category-item">
-                                <strong>Claims & Processing</strong>
-                                <p>ClaimsIntelligencePro, CaseIntel, BusinessProfileSearch</p>
-                            </div>
-                            <div class="category-item">
-                                <strong>Compliance & Control</strong>
-                                <p>InsuranceControlsAdvisor, RegulatoryWatch, AppetiteClassifier</p>
-                            </div>
-                        </div>
-                        
-                        <div class="tech-specs">
-                            <h4>Enterprise Integration</h4>
-                            <p>Seamless ServiceNow integration, no-code workflow development, real-time performance monitoring with quality intelligence engine.</p>
-                        </div>
-                    </div>
-                </div>
+    
+    <!-- Trust Section -->
+    <section class="trust-section">
+        <div class="trust-content">
+            <p class="trust-text">Built by Visionary Industry Experts</p>
+            <div style="max-width: 900px; margin: 0 auto; text-align: center; padding: 0 24px;">
+                <p style="font-size: 18px; line-height: 1.6; color: var(--text-secondary);">
+                    Created by practitioners who've architected AI transformations at Fortune 100 carriers. 
+                    We've lived through the challenges of scaling AI in heavily regulated environments and know 
+                    what it takes to build insurance intelligence that delivers real business outcomes at enterprise scale.
+                </p>
             </div>
         </div>
     </section>
-
-    <section class="section product-detail-section" id="asurisk-detail">
-        <div class="product-detail-container">
-            <div class="product-detail-content">
-                <div class="detail-header">
-                    <h2>Asurisk AI Hub</h2>
-                    <p class="detail-subtitle">Unified command center for AI operations with 360° compliance visibility</p>
-                </div>
-                
-                <div class="detail-grid">
-                    <div class="detail-text">
-                        <h3>Complete AI Governance & Risk Management</h3>
-                        <p>Monitor, manage, and govern AI initiatives across all systems with automated audits and dynamic guardrails.</p>
-                        
-                        <div class="hub-capabilities">
-                            <div class="capability-section">
-                                <h4>AI Monitoring Capabilities</h4>
-                                <ul>
-                                    <li>Real-time agent performance monitoring</li>
-                                    <li>Predictive model drift detection</li>
-                                    <li>Automated quality optimization</li>
-                                    <li>Processing efficiency analytics</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="capability-section">
-                                <h4>Regulatory Intelligence</h4>
-                                <ul>
-                                    <li>42 compliance requirements coverage</li>
-                                    <li>Proactive regulatory change monitoring</li>
-                                    <li>Violation risk scoring</li>
-                                    <li>Automated regulatory reporting</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="capability-section">
-                                <h4>Audit Control Intelligence</h4>
-                                <ul>
-                                    <li>Continuous control effectiveness monitoring</li>
-                                    <li>Exception tracking and management</li>
-                                    <li>Automated audit trail generation</li>
-                                    <li>Control gap detection and remediation</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="detail-visual">
-                        <div class="screenshot-container" id="screenshot-3">
-                            <img src="images/asurisk2.png" alt="Asurisk AI Hub Operations Center" class="detail-screenshot">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="built-for-insurance">
+    
+    <!-- Features Section -->
+    <section class="features-section">
         <div class="section-header">
-            <h2 class="section-title">Built for insurance reality</h2>
-            <p class="section-subtitle">While others push wholesale transformation, we meet carriers where they are with intelligence that connects existing systems.</p>
+            <h2 class="section-title">
+                State-of-the-art<br>
+                insurance intelligence models
+            </h2>
+            <p class="section-subtitle">
+                Unlock unlimited potential with our three model families — designed to meet the diverse needs of modern carriers.
+            </p>
         </div>
         
         <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-icon icon-orange">01</div>
-                <h3 class="feature-title">Cross-platform workflows</h3>
-                <p class="feature-description">ServiceNow claims decisions need Guidewire underwriting data. Our agents span systems, not silos.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon icon-blue">02</div>
-                <h3 class="feature-title">Compliance by design</h3>
-                <p class="feature-description">42 regulatory requirements, automated audits, continuous monitoring. Built-in, not bolted-on.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon icon-purple">03</div>
-                <h3 class="feature-title">Carrier-certified blueprints</h3>
-                <p class="feature-description">Proven workflows from top insurers. Deploy in days, not months. Reduce time-to-value by 50%.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="about-us">
-        <!-- About Us Synopsis -->
-        <div class="about-synopsis">
-            <h3>Industry practitioners building the future of insurance intelligence</h3>
-            <p>We are a collection of industry pioneers and practitioners who have spent decades at the intersection of business and technology within commercial insurance. Our team combines deep domain expertise with proven track records of driving digital transformation at Fortune 100 scale. We've architected the systems, led the partnerships, and built the ecosystems that define modern insurance operations. Having lived through the challenges of scaling AI in heavily regulated environments, we understand what works—and what doesn't—when bridging cutting-edge technology with real-world business outcomes.</p>
-        </div>
-
-        <!-- Leadership Bios -->
-        <div class="bio-grid">
-            <div class="bio-card">
-                <div class="bio-header">
-                    <div class="bio-initials">V.S.</div>
-                    <div>
-                        <div class="bio-name">Chief Executive Officer</div>
-                        <div class="bio-title">Visionary Product Leader</div>
-                    </div>
-                </div>
-                <div class="bio-content">
-                    <div>Visionary product design thinker with 25+ years scaling AI solutions across commercial insurance value chain.</div>
-                    <div>Led enterprise-scale data analytics and AI-led digital transformation at Fortune 100 carrier.</div>
-                    <div>Proven expertise translating complex AI capabilities into measurable business outcomes.</div>
-                </div>
-            </div>
-
-            <div class="bio-card">
-                <div class="bio-header">
-                    <div class="bio-initials">S.J.</div>
-                    <div>
-                        <div class="bio-name">Chief Product and AI Officer</div>
-                        <div class="bio-title">AI Transformation Expert</div>
-                    </div>
-                </div>
-                <div class="bio-content">
-                    <div>20+ years transforming enterprises through data and AI across insurance, healthcare, and financial services.</div>
-                    <div>Led Generative AI practice and large-scale cloud migrations at Fortune 100 carrier.</div>
-                    <div>Expert in responsible AI governance, data mesh architecture, and enterprise cloud transformation.</div>
-                </div>
-            </div>
-
-            <div class="bio-card">
-                <div class="bio-header">
-                    <div class="bio-initials">R.K.</div>
-                    <div>
-                        <div class="bio-name">Chief Technology Officer</div>
-                        <div class="bio-title">Infrastructure Architect</div>
-                    </div>
-                </div>
-                <div class="bio-content">
-                    <div>15+ years architecting scalable data engineering platforms and AI infrastructure for enterprise clients.</div>
-                    <div>Led engineering teams building real-time analytics systems processing billions of transactions daily.</div>
-                    <div>Expert in cloud-native architectures, MLOps pipelines, and innovation-driven technology strategy.</div>
-                </div>
-            </div>
-
-            <div class="bio-card">
-                <div class="bio-header">
-                    <div class="bio-initials">B.K.</div>
-                    <div>
-                        <div class="bio-name">Chief Revenue Officer</div>
-                        <div class="bio-title">Enterprise Sales Leader</div>
-                    </div>
-                </div>
-                <div class="bio-content">
-                    <div>15+ years leading enterprise sales and revenue growth for Fortune 500 technology companies.</div>
-                    <div>Built and scaled North America sales organization with deep vertical market expertise.</div>
-                    <div>Expert in complex B2B sales cycles, channel partnerships, and market expansion strategies.</div>
-                </div>
-            </div>
-
-            <div class="bio-card">
-                <div class="bio-header">
-                    <div class="bio-initials">R.S.</div>
-                    <div>
-                        <div class="bio-name">Chief Growth Officer</div>
-                        <div class="bio-title">Transformation Strategist</div>
-                    </div>
-                </div>
-                <div class="bio-content">
-                    <div>25+ years driving digital transformation across insurance, financial services, and enterprise sectors globally.</div>
-                    <div>Led $100M-$500M transformation programs spanning Europe and Americas markets.</div>
-                    <div>Expert in strategic planning, M&A, and emerging technologies including GenAI/AI/ML.</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Collective Impact -->
-        <div class="collective-impact">
-            <h3>Collective Impact</h3>
-            <p>Our leadership has architected billions in digital transformations, built the industry partnerships that define modern insurance technology, and proven that AI can deliver measurable outcomes at enterprise scale while maintaining regulatory compliance.</p>
-        </div>
-    </section>
-
-    <section class="section" id="resources">
-        <div class="section-header">
-            <h2 class="section-title">Resources & Insights</h2>
-            <p class="section-subtitle">Deep dive into insurance intelligence with expert insights, real-world case studies, and comprehensive documentation</p>
-        </div>
-        
-        <div class="resources-grid">
-            <div class="resource-category">
-                <div class="resource-header">
-                    <div class="resource-icon">📚</div>
-                    <h3>Articles & Insights</h3>
-                    <p>Expert perspectives on insurance AI and regulatory compliance</p>
-                </div>
-                <div class="resource-links">
-                    <a href="#" class="resource-link">
-                        <span>The $500B Fragmentation Problem in Commercial Insurance</span>
-                        <span class="link-arrow">→</span>
-                    </a>
-                    <a href="#" class="resource-link">
-                        <span>Why Cross-Platform AI Succeeds Where Point Solutions Fail</span>
-                        <span class="link-arrow">→</span>
-                    </a>
-                    <a href="#" class="resource-link">
-                        <span>Regulatory Readiness: 42 Requirements Every Carrier Must Know</span>
-                        <span class="link-arrow">→</span>
-                    </a>
-                    <a href="#" class="resource-link">
-                        <span>From Administrative Archaeology to Strategic Intelligence</span>
-                        <span class="link-arrow">→</span>
-                    </a>
-                </div>
-                <a href="#" class="view-all-link">View all articles →</a>
+                <div class="feature-icon">⚡</div>
+                <h3 class="feature-title">Lightning-Fast Processing</h3>
+                <p class="feature-description">
+                    Transform 30-day cycles into real-time decisions with AI agents that understand ACORD forms, policy language, and carrier appetites from day one.
+                </p>
             </div>
             
-            <div class="resource-category">
-                <div class="resource-header">
-                    <div class="resource-icon">📊</div>
-                    <h3>Case Studies</h3>
-                    <p>Real-world implementations and measurable results</p>
-                </div>
-                <div class="resource-links">
-                    <a href="#" class="resource-link">
-                        <span>Regional Carrier: 50% Faster Processing with CLEARNOW360</span>
-                        <span class="link-arrow">→</span>
-                    </a>
-                    <a href="#" class="resource-link">
-                        <span>Specialty Insurer: Cross-Platform Workflow Transformation</span>
-                        <span class="link-arrow">→</span>
-                    </a>
-                    <a href="#" class="resource-link">
-                        <span>Enterprise Deployment: 40+ Agents Across 5 Systems</span>
-                        <span class="link-arrow">→</span>
-                    </a>
-                    <a href="#" class="resource-link">
-                        <span>Compliance Success: Automated Audits Across Jurisdictions</span>
-                        <span class="link-arrow">→</span>
-                    </a>
-                </div>
-                <a href="#" class="view-all-link">View all case studies →</a>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3 class="feature-title">Enterprise Security</h3>
+                <p class="feature-description">
+                    Deploy with confidence using SOC 2 Type II certified infrastructure, end-to-end encryption, and compliance with 42+ regulatory requirements.
+                </p>
             </div>
             
-            <div class="resource-category">
-                <div class="resource-header">
-                    <div class="resource-icon">🔧</div>
-                    <h3>Documentation & Wiki</h3>
-                    <p>Comprehensive guides and product documentation</p>
-                </div>
-                <div class="resource-links">
-                    <a href="#" class="resource-link">
-                        <span>Agentium Intelligence Studio - Getting Started</span>
-                        <span class="link-arrow">→</span>
-                    </a>
-                    <a href="#" class="resource-link">
-                        <span>CLEARNOW360 Implementation Guide</span>
-                        <span class="link-arrow">→</span>
-                    </a>
-                    <a href="#" class="resource-link">
-                        <span>Asurisk AI Hub - Compliance Configuration</span>
-                        <span class="link-arrow">→</span>
-                    </a>
-                    <a href="#" class="resource-link">
-                        <span>API Documentation & Integration Examples</span>
-                        <span class="link-arrow">→</span>
-                    </a>
-                </div>
-                <a href="#" class="view-all-link">View documentation →</a>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3 class="feature-title">Precision Accuracy</h3>
+                <p class="feature-description">
+                    Fine-tune models on your proprietary data with built-in RAG, providing verifiable outputs grounded in your sources of truth.
+                </p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔗</div>
+                <h3 class="feature-title">Seamless Integration</h3>
+                <p class="feature-description">
+                    Connect ServiceNow, Guidewire, and legacy systems through one unified platform. Our agents span systems, not silos.
+                </p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3 class="feature-title">Intelligent Analytics</h3>
+                <p class="feature-description">
+                    Monitor AI performance, detect model drift, and optimize workflows with real-time insights and predictive analytics.
+                </p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3 class="feature-title">Rapid Deployment</h3>
+                <p class="feature-description">
+                    Go from proof-of-concept to production in days with carrier-certified blueprints and no-code workflow development.
+                </p>
             </div>
         </div>
     </section>
-
-    <section class="section">
+    
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="products-container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    Build high-impact applications<br>
+                    grounded in your proprietary data
+                </h2>
+                <p class="section-subtitle">
+                    Purpose-built solutions that transform insurance operations from the ground up.
+                </p>
+            </div>
+            
+            <div class="product-showcase">
+                <div class="product-content">
+                    <div class="product-badge">
+                        <span class="product-badge-text">CLEAR360</span>
+                    </div>
+                    <h3 class="product-title">Intake Automation Platform</h3>
+                    <p class="product-description">
+                        Transform submission intake from email chaos to intelligent automation. Built on ServiceNow with deep insurance domain expertise.
+                    </p>
+                    <ul class="product-features">
+                        <li class="product-feature">
+                            <span class="feature-check">✓</span>
+                            <span class="product-feature-text">40-60% faster processing with automated validation</span>
+                        </li>
+                        <li class="product-feature">
+                            <span class="feature-check">✓</span>
+                            <span class="product-feature-text">Cross-reference multiple sources in real-time</span>
+                        </li>
+                        <li class="product-feature">
+                            <span class="feature-check">✓</span>
+                            <span class="product-feature-text">Intelligent triage for immediate eligibility screening</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Learn More →</a>
+                </div>
+                <div class="product-visual">
+                    <div class="product-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <div class="product-image-content">
+                            <h4 class="product-image-title">CLEAR360</h4>
+                            <p class="product-image-subtitle">Intelligent Intake Automation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-showcase">
+                <div class="product-content">
+                    <div class="product-badge">
+                        <span class="product-badge-text">Agentium</span>
+                    </div>
+                    <h3 class="product-title">AI Agent Intelligence</h3>
+                    <p class="product-description">
+                        40+ vertical agents designed specifically for insurance workflows. From ACORDFormsExpert to ClaimsIntelligencePro.
+                    </p>
+                    <ul class="product-features">
+                        <li class="product-feature">
+                            <span class="feature-check">✓</span>
+                            <span class="product-feature-text">Pre-built agents for every insurance workflow</span>
+                        </li>
+                        <li class="product-feature">
+                            <span class="feature-check">✓</span>
+                            <span class="product-feature-text">No-code development with enterprise security</span>
+                        </li>
+                        <li class="product-feature">
+                            <span class="feature-check">✓</span>
+                            <span class="product-feature-text">Built-in compliance and regulatory adaptation</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Explore Agents →</a>
+                </div>
+                <div class="product-visual">
+                    <div class="product-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <div class="product-image-content">
+                            <h4 class="product-image-title">Agentium</h4>
+                            <p class="product-image-subtitle">40+ Specialized AI Agents</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-showcase">
+                <div class="product-content">
+                    <div class="product-badge">
+                        <span class="product-badge-text">Asurisk Hub</span>
+                    </div>
+                    <h3 class="product-title">AI Governance Center</h3>
+                    <p class="product-description">
+                        360° compliance visibility across all AI initiatives. Automated audits, continuous monitoring, and dynamic guardrails.
+                    </p>
+                    <ul class="product-features">
+                        <li class="product-feature">
+                            <span class="feature-check">✓</span>
+                            <span class="product-feature-text">42 compliance requirements coverage</span>
+                        </li>
+                        <li class="product-feature">
+                            <span class="feature-check">✓</span>
+                            <span class="product-feature-text">Proactive regulatory change monitoring</span>
+                        </li>
+                        <li class="product-feature">
+                            <span class="feature-check">✓</span>
+                            <span class="product-feature-text">Automated audit trail generation</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">View Hub →</a>
+                </div>
+                <div class="product-visual">
+                    <div class="product-image">
+                        <div class="product-image-content">
+                            <h4 class="product-image-title">Asurisk</h4>
+                            <p class="product-image-subtitle">Complete AI Governance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">50%</div>
+                    <div class="stat-label">Faster Processing</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">40+</div>
+                    <div class="stat-label">AI Agents</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">42</div>
+                    <div class="stat-label">Compliance Requirements</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">SOC 2 Certified</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
         <div class="cta-content">
-            <h2 class="cta-title">Ready to elevate your operations?</h2>
-            <p class="cta-subtitle">See how your workflows can become intelligent in days, not years</p>
-            <div class="cta-buttons">
-                <a href="#" class="btn-primary" onclick="showDemoPage()">Request demo</a>
-                <a href="#" class="btn-secondary">View documentation →</a>
+            <h2 class="cta-title">
+                Ready to transform your insurance operations?
+            </h2>
+            <p class="cta-subtitle">
+                Join leading carriers already leveraging AI to redefine what's possible.
+            </p>
+            <div class="cta-actions">
+                <a href="#" class="btn btn-white">
+                    Request Demo
+                    <span>→</span>
+                </a>
+                <a href="#" class="btn btn-outline-white">
+                    Contact Sales
+                </a>
             </div>
         </div>
     </section>
-
-    </div>
-
-    <!-- Demo Request Page -->
-    <div id="demo-page" class="demo-page">
-        <div class="demo-container">
-            <div class="demo-form-section">
-                <div class="demo-form-header">
-                    <h1>Request a Demo</h1>
-                    <p>See how ElevateNow can transform your insurance operations in 30 minutes</p>
-                </div>
-
-                <div class="form-steps">
-                    <div class="step">
-                        <div class="step-number active" id="step-1-number">1</div>
-                        <div class="step-title active" id="step-1-title">Contact Information</div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="logo-mark" style="background: white; color: var(--primary);">E</div>
+                        ElevateNow
                     </div>
-                    <div class="step-connector" id="connector-1"></div>
-                    <div class="step">
-                        <div class="step-number" id="step-2-number">2</div>
-                        <div class="step-title" id="step-2-title">Business Details</div>
-                    </div>
-                    <div class="step-connector" id="connector-2"></div>
-                    <div class="step">
-                        <div class="step-number" id="step-3-number">3</div>
-                        <div class="step-title" id="step-3-title">Schedule Preferences</div>
+                    <p class="footer-description">
+                        The industry's only agentic-native platform for insurance vertical. Built from the ground up to transform commercial insurance.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link">𝕏</a>
+                        <a href="#" class="social-link">in</a>
+                        <a href="#" class="social-link">▶</a>
                     </div>
                 </div>
-
-                <form id="demo-form">
-                    <!-- Step 1: Contact Information -->
-                    <div class="form-step active" id="step-1">
-                        <div class="form-content">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label class="form-label">First Name *</label>
-                                    <input type="text" class="form-input" id="firstName" required>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Last Name *</label>
-                                    <input type="text" class="form-input" id="lastName" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Email *</label>
-                                <input type="email" class="form-input" id="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Company *</label>
-                                <input type="text" class="form-input" id="company" required>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Step 2: Business Details -->
-                    <div class="form-step" id="step-2">
-                        <div class="form-content">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label class="form-label">Job Title *</label>
-                                    <input type="text" class="form-input" id="jobTitle" required>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Phone Number</label>
-                                    <input type="tel" class="form-input" id="phone">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label class="form-label">Company Size *</label>
-                                    <select class="form-select" id="companySize" required>
-                                        <option value="">Select size</option>
-                                        <option value="1-50">1-50 employees</option>
-                                        <option value="51-200">51-200 employees</option>
-                                        <option value="201-1000">201-1,000 employees</option>
-                                        <option value="1001-5000">1,001-5,000 employees</option>
-                                        <option value="5000+">5,000+ employees</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Industry *</label>
-                                    <select class="form-select" id="industry" required>
-                                        <option value="">Select industry</option>
-                                        <option value="commercial-insurance">Commercial Insurance</option>
-                                        <option value="property-casualty">Property & Casualty</option>
-                                        <option value="specialty-insurance">Specialty Insurance</option>
-                                        <option value="reinsurance">Reinsurance</option>
-                                        <option value="insurtech">InsurTech</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Primary Use Case *</label>
-                                <select class="form-select" id="useCase" required>
-                                    <option value="">Select primary interest</option>
-                                    <option value="submission-processing">Submission Processing Automation</option>
-                                    <option value="underwriting-intelligence">Underwriting Intelligence</option>
-                                    <option value="claims-automation">Claims Processing Automation</option>
-                                    <option value="compliance-governance">AI Compliance & Governance</option>
-                                    <option value="cross-platform-integration">Cross-Platform Integration</option>
-                                    <option value="general-evaluation">General Platform Evaluation</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Step 3: Schedule Preferences -->
-                    <div class="form-step" id="step-3">
-                        <div class="form-content">
-                            <div class="form-group">
-                                <label class="form-label">Preferred Time Zone</label>
-                                <select class="form-select" id="timezone">
-                                    <option value="EST">Eastern Time (EST)</option>
-                                    <option value="CST">Central Time (CST)</option>
-                                    <option value="MST">Mountain Time (MST)</option>
-                                    <option value="PST">Pacific Time (PST)</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Additional Comments</label>
-                                <textarea class="form-input" id="comments" rows="4" placeholder="Any specific areas of interest or questions for our team?"></textarea>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-actions">
-                        <button type="button" class="btn-back" id="prevBtn" onclick="changeStep(-1)" disabled>BACK</button>
-                        <button type="button" class="btn-next" id="nextBtn" onclick="changeStep(1)">NEXT</button>
-                    </div>
-                </form>
+                
+                <div class="footer-column">
+                    <h4>Products</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">CLEAR360</a></li>
+                        <li><a href="#">Agentium Intelligence</a></li>
+                        <li><a href="#">Asurisk AI Hub</a></li>
+                        <li><a href="#">API Documentation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Solutions</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Underwriting</a></li>
+                        <li><a href="#">Claims Processing</a></li>
+                        <li><a href="#">Risk Assessment</a></li>
+                        <li><a href="#">Compliance</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
             </div>
-
-            <div class="demo-info-section">
-                <div class="info-card">
-                    <h3>What to Expect</h3>
-                    <ul class="info-list">
-                        <li>30-minute personalized demo</li>
-                        <li>Live Q&A with our experts</li>
-                        <li>Real-world use case examples</li>
-                        <li>Technical architecture overview</li>
-                        <li>Implementation roadmap discussion</li>
-                    </ul>
-                </div>
-
-                <div class="info-card">
-                    <h3>Demo Highlights</h3>
-                    <ul class="info-list">
-                        <li>Agentic workflow automation</li>
-                        <li>Data extraction & analysis</li>
-                        <li>Risk assessment capabilities</li>
-                        <li>Integration with existing systems</li>
-                        <li>ROI & performance metrics</li>
-                    </ul>
-                </div>
-
-                <div class="contact-info">
-                    <h4>Questions?</h4>
-                    <p>Our team is here to help you understand how our platform can benefit your organization.</p>
-                    <a href="mailto:sales@elevatenow.com" class="contact-btn">CONTACT US</a>
-                </div>
+            
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    © 2024 ElevateNow. All rights reserved.
+                </p>
+                <ul class="footer-legal">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Security</a></li>
+                </ul>
             </div>
         </div>
-    </div>
-
+    </footer>
+    
     <script>
-        let currentStep = 1;
-        const totalSteps = 3;
-
-        // Navigation functions
-        function scrollToTop() {
-            const mainContent = document.getElementById('main-content');
-            const demoPage = document.getElementById('demo-page');
-            
-            // Show main content, hide demo page
-            mainContent.style.display = 'block';
-            demoPage.classList.remove('active');
-            
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function scrollToSection(sectionId) {
-            const target = document.querySelector(sectionId);
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        }
-
-        function showDemoPage() {
-            const mainContent = document.getElementById('main-content');
-            const demoPage = document.getElementById('demo-page');
-            
-            // Hide main content, show demo page
-            mainContent.style.display = 'none';
-            demoPage.classList.add('active');
-            
-            // Reset form to step 1
-            currentStep = 1;
-            showStep(currentStep);
-            
-            // Scroll to top of demo page
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Demo form functions
-        function changeStep(direction) {
-            if (direction === 1 && currentStep < totalSteps) {
-                // Validate current step before proceeding
-                if (validateStep(currentStep)) {
-                    currentStep++;
-                    showStep(currentStep);
-                }
-            } else if (direction === -1 && currentStep > 1) {
-                currentStep--;
-                showStep(currentStep);
-            }
-        }
-
-        function showStep(step) {
-            // Hide all steps
-            for (let i = 1; i <= totalSteps; i++) {
-                const stepElement = document.getElementById(`step-${i}`);
-                const stepNumber = document.getElementById(`step-${i}-number`);
-                const stepTitle = document.getElementById(`step-${i}-title`);
-                
-                stepElement.classList.remove('active');
-                stepNumber.classList.remove('active', 'completed');
-                stepTitle.classList.remove('active');
-                
-                if (i < step) {
-                    stepNumber.classList.add('completed');
-                    stepNumber.innerHTML = '✓';
-                } else {
-                    stepNumber.innerHTML = i;
-                }
-                
-                if (i === step) {
-                    stepElement.classList.add('active');
-                    stepNumber.classList.add('active');
-                    stepTitle.classList.add('active');
-                }
-            }
-            
-            // Update connectors
-            for (let i = 1; i < totalSteps; i++) {
-                const connector = document.getElementById(`connector-${i}`);
-                if (i < step) {
-                    connector.classList.add('completed');
-                } else {
-                    connector.classList.remove('completed');
-                }
-            }
-            
-            // Update buttons
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            
-            prevBtn.disabled = (step === 1);
-            
-            if (step === totalSteps) {
-                nextBtn.innerHTML = 'SUBMIT REQUEST';
-                nextBtn.onclick = submitForm;
-            } else {
-                nextBtn.innerHTML = 'NEXT';
-                nextBtn.onclick = () => changeStep(1);
-            }
-        }
-
-        function validateStep(step) {
-            const requiredFields = {
-                1: ['firstName', 'lastName', 'email', 'company'],
-                2: ['jobTitle', 'companySize', 'industry', 'useCase'],
-                3: [] // No required fields in step 3
-            };
-            
-            const fields = requiredFields[step] || [];
-            let isValid = true;
-            
-            fields.forEach(fieldId => {
-                const field = document.getElementById(fieldId);
-                if (!field.value.trim()) {
-                    field.style.borderColor = '#ef4444';
-                    isValid = false;
-                } else {
-                    field.style.borderColor = '#d1d5db';
-                }
-            });
-            
-            if (!isValid) {
-                alert('Please fill in all required fields.');
-            }
-            
-            return isValid;
-        }
-
-        function submitForm() {
-            // Collect form data
-            const formData = {
-                firstName: document.getElementById('firstName').value,
-                lastName: document.getElementById('lastName').value,
-                email: document.getElementById('email').value,
-                company: document.getElementById('company').value,
-                jobTitle: document.getElementById('jobTitle').value,
-                phone: document.getElementById('phone').value,
-                companySize: document.getElementById('companySize').value,
-                industry: document.getElementById('industry').value,
-                useCase: document.getElementById('useCase').value,
-                timezone: document.getElementById('timezone').value,
-                comments: document.getElementById('comments').value
-            };
-            
-            // Here you would normally send the data to your backend
-            console.log('Form submitted:', formData);
-            
-            // Show success message
-            alert('Thank you for your interest! Our team will contact you within 24 hours to schedule your personalized demo.');
-            
-            // Return to main page
-            scrollToTop();
-        }
-
-        // Product carousel animation
-        function initializeCarousel() {
-            const slides = document.querySelectorAll('.product-slide');
-            const indicators = document.querySelectorAll('.indicator');
-            let currentSlide = 0;
-            
-            function showSlide(index) {
-                slides.forEach((slide, i) => {
-                    slide.classList.remove('active', 'prev');
-                    if (i === index) {
-                        slide.classList.add('active');
-                    } else if (i < index) {
-                        slide.classList.add('prev');
-                    }
-                });
-                
-                indicators.forEach((indicator, i) => {
-                    indicator.classList.toggle('active', i === index);
-                });
-            }
-            
-            function nextSlide() {
-                currentSlide = (currentSlide + 1) % slides.length;
-                showSlide(currentSlide);
-            }
-            
-            // Auto-advance slides every 4 seconds
-            setInterval(nextSlide, 4000);
-            
-            // Click handlers for indicators
-            indicators.forEach((indicator, index) => {
-                indicator.addEventListener('click', () => {
-                    currentSlide = index;
-                    showSlide(currentSlide);
-                });
-            });
-        }
-
-        // Smooth scrolling for navigation links
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -2641,107 +1405,31 @@
                 }
             });
         });
-
-        // Initialize carousel when page loads
-        window.addEventListener('load', function() {
-            initializeCarousel();
-            initializeImageViewers();
+        
+        // Navbar scroll effect
+        let lastScroll = 0;
+        const navbar = document.querySelector('.nav-container');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+            
+            lastScroll = currentScroll;
         });
-
-        // Interactive Image Viewer Functions
-        function initializeImageViewers() {
-            const containers = document.querySelectorAll('.screenshot-container');
-            
-            containers.forEach(container => {
-                const img = container.querySelector('.detail-screenshot');
-                let isDragging = false;
-                let startX = 0;
-                let startY = 0;
-                let currentX = 0;
-                let currentY = 0;
-                let scale = 1;
-                
-                // Store initial state - only horizontal position needed
-                container.imageState = {
-                    x: 0
-                };
-                
-                // Mouse events
-                container.addEventListener('mousedown', function(e) {
-                    isDragging = true;
-                    startX = e.clientX - currentX;
-                    startY = e.clientY - currentY;
-                    container.style.cursor = 'grabbing';
-                });
-                
-                document.addEventListener('mousemove', function(e) {
-                    if (!isDragging) return;
-                    
-                    e.preventDefault();
-                    currentX = e.clientX - startX;
-                    // Remove vertical panning - only allow horizontal
-                    
-                    // Apply bounds to prevent excessive panning
-                    const maxPan = 100;
-                    currentX = Math.max(-maxPan, Math.min(maxPan, currentX));
-                    
-                    container.imageState.x = currentX;
-                    // Don't update Y position
-                    
-                    updateImageTransform(container);
-                });
-                
-                document.addEventListener('mouseup', function() {
-                    isDragging = false;
-                    container.style.cursor = 'grab';
-                });
-                
-                // Touch events for mobile
-                container.addEventListener('touchstart', function(e) {
-                    isDragging = true;
-                    const touch = e.touches[0];
-                    startX = touch.clientX - currentX;
-                    startY = touch.clientY - currentY;
-                });
-                
-                container.addEventListener('touchmove', function(e) {
-                    if (!isDragging) return;
-                    
-                    e.preventDefault();
-                    const touch = e.touches[0];
-                    currentX = touch.clientX - startX;
-                    // Remove vertical panning - only allow horizontal
-                    
-                    const maxPan = 100;
-                    currentX = Math.max(-maxPan, Math.min(maxPan, currentX));
-                    
-                    container.imageState.x = currentX;
-                    // Don't update Y position
-                    
-                    updateImageTransform(container);
-                });
-                
-                container.addEventListener('touchend', function() {
-                    isDragging = false;
-                });
-                
-                // Remove mouse wheel zoom - no longer needed
-            });
-        }
         
-        function updateImageTransform(container) {
-            const img = container.querySelector('.detail-screenshot');
-            const state = container.imageState;
-            
-            // Only apply horizontal translation, no vertical or scaling
-            img.style.transform = `translateX(${state.x}px)`;
-        }
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
         
-        function resetImage(containerId) {
-            const container = document.getElementById(containerId);
-            container.imageState = { x: 0 };
-            updateImageTransform(container);
-        }
+        mobileMenuBtn?.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+        });
     </script>
 </body>
 </html>
