@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ElevateNow - Enterprise Insurance Intelligence Platform</title>
+    <title>Elevatenow - Enterprise Insurance Intelligence Platform</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
         
@@ -14,21 +14,29 @@
         }
         
         :root {
-            --primary: #0a0a0a;
-            --primary-light: #1a1a1a;
-            --accent: #6366f1;
-            --accent-light: #818cf8;
-            --text-primary: #0a0a0a;
-            --text-secondary: #525252;
-            --text-tertiary: #737373;
+            --primary: #000000;
+            --primary-light: #171717;
+            --accent: #6366F1;
+            --accent-hover: #5558E3;
+            --accent-purple: #7C3AED;
+            --text-primary: #000000;
+            --text-secondary: #666666;
+            --text-tertiary: #999999;
             --bg-primary: #ffffff;
             --bg-secondary: #fafafa;
             --bg-tertiary: #f5f5f5;
             --border: #e5e5e5;
-            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --gradient-dark: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+            --border-light: #f0f0f0;
+            --gradient-primary: linear-gradient(90deg, #000000 0%, #171717 100%);
+            --gradient-accent: linear-gradient(90deg, #6366F1 0%, #7C3AED 100%);
+            --gradient-subtle: linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+        }
+        
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         body {
@@ -39,6 +47,27 @@
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            /* Momentum scrolling for iOS */
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Custom scrollbar for webkit browsers */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-tertiary);
         }
         
         /* Navigation */
@@ -47,52 +76,36 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             z-index: 1000;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--border-light);
             transition: all 0.3s ease;
         }
         
         .nav-content {
-            max-width: 1280px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 24px;
-            height: 72px;
+            padding: 0 32px;
+            height: 80px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
         
         .logo {
-            font-size: 22px;
-            font-weight: 800;
+            font-size: 28px;
+            font-weight: 700;
             color: var(--primary);
             text-decoration: none;
             letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .logo-mark {
-            width: 32px;
-            height: 32px;
-            background: var(--gradient-1);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 900;
-            font-size: 18px;
         }
         
         .nav-menu {
             display: flex;
             align-items: center;
-            gap: 40px;
+            gap: 48px;
             list-style: none;
         }
         
@@ -109,22 +122,6 @@
             color: var(--primary);
         }
         
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--accent);
-            transform: scaleX(0);
-            transition: transform 0.2s ease;
-        }
-        
-        .nav-menu a:hover::after {
-            transform: scaleX(1);
-        }
-        
         .nav-actions {
             display: flex;
             align-items: center;
@@ -132,8 +129,8 @@
         }
         
         .nav-btn {
-            padding: 10px 20px;
-            border-radius: 24px;
+            padding: 12px 24px;
+            border-radius: 8px;
             font-size: 14px;
             font-weight: 600;
             text-decoration: none;
@@ -145,51 +142,35 @@
         .nav-btn-secondary {
             color: var(--text-primary);
             background: transparent;
-            border: 1px solid var(--border);
         }
         
         .nav-btn-secondary:hover {
-            background: var(--bg-secondary);
-            border-color: var(--text-tertiary);
+            color: var(--accent);
         }
         
         .nav-btn-primary {
             color: white;
             background: var(--primary);
-            border: 1px solid var(--primary);
         }
         
         .nav-btn-primary:hover {
             background: var(--primary-light);
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
         
         /* Hero Section */
         .hero {
-            padding-top: 120px;
-            padding-bottom: 80px;
-            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            padding-top: 160px;
+            padding-bottom: 120px;
+            background: var(--gradient-subtle);
             position: relative;
             overflow: hidden;
         }
         
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-        
         .hero-content {
-            max-width: 1280px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 32px;
             position: relative;
             z-index: 1;
         }
@@ -198,54 +179,51 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 6px 16px;
-            background: var(--bg-tertiary);
+            padding: 8px 16px;
+            background: var(--bg-primary);
             border: 1px solid var(--border);
-            border-radius: 24px;
-            margin-bottom: 24px;
+            border-radius: 100px;
+            margin-bottom: 32px;
         }
         
         .badge-dot {
-            width: 8px;
-            height: 8px;
-            background: #10b981;
+            width: 6px;
+            height: 6px;
+            background: #00D924;
             border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
         }
         
         .badge-text {
             font-size: 13px;
             font-weight: 600;
             color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .hero-title {
-            font-size: clamp(40px, 6vw, 72px);
+            font-size: clamp(48px, 7vw, 88px);
             font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -1.5px;
-            margin-bottom: 24px;
-            max-width: 900px;
+            line-height: 1;
+            letter-spacing: -2px;
+            margin-bottom: 32px;
+            max-width: 1000px;
         }
         
-        .gradient-text {
-            background: var(--gradient-1);
+        .gradient-text-purple {
+            background: linear-gradient(90deg, #6366F1 0%, #7C3AED 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
         .hero-subtitle {
-            font-size: 20px;
-            line-height: 1.6;
+            font-size: 21px;
+            line-height: 1.5;
             color: var(--text-secondary);
-            max-width: 700px;
-            margin-bottom: 40px;
+            max-width: 720px;
+            margin-bottom: 48px;
+            font-weight: 400;
         }
         
         .hero-actions {
@@ -256,8 +234,8 @@
         }
         
         .btn {
-            padding: 14px 32px;
-            border-radius: 28px;
+            padding: 16px 32px;
+            border-radius: 8px;
             font-size: 16px;
             font-weight: 600;
             text-decoration: none;
@@ -277,41 +255,40 @@
         .btn-primary:hover {
             background: var(--primary-light);
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
         }
         
         .btn-secondary {
-            background: white;
+            background: transparent;
             color: var(--primary);
-            border: 2px solid var(--border);
+            border: 2px solid var(--primary);
         }
         
         .btn-secondary:hover {
-            background: var(--bg-secondary);
-            border-color: var(--text-tertiary);
+            background: var(--primary);
+            color: white;
         }
         
         .hero-visual {
-            margin-top: 60px;
+            margin-top: 80px;
             position: relative;
         }
         
         .visual-container {
             background: white;
-            border-radius: 24px;
+            border-radius: 16px;
             border: 1px solid var(--border);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
             overflow: hidden;
             position: relative;
         }
         
         .visual-header {
             background: var(--bg-secondary);
-            padding: 16px 24px;
+            padding: 20px 24px;
             border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            gap: 16px;
         }
         
         .window-controls {
@@ -323,11 +300,8 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
+            background: var(--border);
         }
-        
-        .dot-red { background: #ef4444; }
-        .dot-yellow { background: #f59e0b; }
-        .dot-green { background: #10b981; }
         
         .visual-title {
             font-size: 14px;
@@ -335,213 +309,468 @@
             color: var(--text-secondary);
         }
         
-        .visual-content {
-            padding: 40px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
+        .product-carousel {
+                width: 100%;
+                height: 550px;
+                position: relative;
+                background: white;
+            }
+
+            .carousel-slide {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                opacity: 0;
+                transition: opacity 0.8s ease;
+            }
+
+            .carousel-slide.active {
+                opacity: 1;
+            }
+
+            .carousel-slide img {
+                width: 95%;
+                height: 90%;
+                object-fit: contain;
+                object-position: center top;
+            }
+
+            .slide-caption {
+                position: absolute;
+                bottom: 24px;
+                left: 32px;
+                right: 32px;
+                background: #2D3748;
+                padding: 16px 24px;
+                border-radius: 8px;
+                border: 1px solid #2D3748;
+                z-index: 5;
+            }
         
-        .visual-animation {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .orbit {
-            position: absolute;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            animation: rotate 20s linear infinite;
-        }
-        
-        .orbit-1 { width: 200px; height: 200px; }
-        .orbit-2 { width: 300px; height: 300px; animation-duration: 30s; }
-        .orbit-3 { width: 400px; height: 400px; animation-duration: 40s; }
-        
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        .orbit-dot {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: white;
-            border-radius: 50%;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-        
-        .visual-text {
-            position: relative;
-            z-index: 10;
-            text-align: center;
+        .slide-caption h3 {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 4px;
             color: white;
         }
         
-        .visual-text h3 {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 16px;
+        .slide-caption p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
         }
         
-        .visual-text p {
-            font-size: 18px;
-            opacity: 0.9;
+        .carousel-dots {
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+        
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--border);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel-dot.active {
+            width: 24px;
+            background: var(--primary);
+            border-radius: 4px;
         }
         
         /* Trust Section */
         .trust-section {
             padding: 60px 0;
             background: white;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
+            border-top: 1px solid var(--border-light);
         }
         
         .trust-content {
-            max-width: 1280px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 32px;
             text-align: center;
         }
         
         .trust-text {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             color: var(--text-tertiary);
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 32px;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            text-align: center;
         }
         
-        .trust-logos {
-            display: flex;
+        .trust-description {
+            font-size: 20px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+        
+        /* Why Section - FIXED */
+        .why-section {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+        }
+        
+        .why-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+        
+        .section-header-compact {
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+        
+        .section-header-compact .section-title {
+            text-align: center;
+        }
+        
+        .section-description {
+            font-size: 18px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .section-header {
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            text-align: center;
+        }
+        
+        .section-title {
+            font-size: clamp(40px, 5vw, 64px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+        }
+        
+        .section-subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .transformation-visual {
+            background: white;
+            border-radius: 16px;
+            padding: 48px;
+            margin-bottom: 40px;
+        }
+        
+        .transformation-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 48px;
             align-items: center;
-            justify-content: center;
-            gap: 60px;
-            flex-wrap: wrap;
-            opacity: 0.6;
-            filter: grayscale(100%);
         }
         
-        .trust-logo {
+        .state-card {
+            text-align: center;
+        }
+        
+        .state-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-tertiary);
+            margin-bottom: 12px;
+        }
+        
+        .state-title {
             font-size: 24px;
             font-weight: 700;
             color: var(--text-primary);
+            margin-bottom: 32px;
+        }
+        
+        .state-layers {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+        
+        .layer {
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .layer-old {
+            background: var(--bg-tertiary);
+            color: var(--text-tertiary);
+            border: 1px solid var(--border);
+        }
+        
+        .layer-old:last-child {
+            background: #FFF5F5;
+            color: #DC2626;
+            border: 2px dashed #FCA5A5;
+            position: relative;
+        }
+        
+        .layer-new {
+            background: var(--gradient-primary);
+            color: white;
+        }
+        
+        .retrofit-badge {
+            position: absolute;
+            top: -10px;
+            right: 16px;
+            background: #DC2626;
+            color: white;
+            font-size: 10px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .native-badge {
+            position: absolute;
+            top: -10px;
+            right: 16px;
+            background: var(--primary);
+            color: white;
+            font-size: 10px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .state-outcome {
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .outcome-old {
+            background: #FFF5F5;
+            color: #DC2626;
+            border: 1px solid #FCA5A5;
+        }
+        
+        .outcome-new {
+            background: #F0F9FF;
+            color: #0066FF;
+            border: 1px solid #93C5FD;
+        }
+        
+        .transform-arrow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .arrow-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .arrow-text {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+        
+        .pillar-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .pillar-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+        
+        .pillar-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 28px;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .pillar-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+        
+        .pillar-description {
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        .why-tagline {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 64px;
+            border-radius: 16px;
+            text-align: center;
+        }
+        
+        .tagline-text {
+            font-size: 40px;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -1px;
         }
         
         /* Features Section */
         .features-section {
             padding: 120px 0;
-            background: var(--bg-secondary);
-        }
-        
-        .section-header {
-            max-width: 800px;
-            margin: 0 auto 80px;
-            text-align: center;
-            padding: 0 24px;
-        }
-        
-        .section-title {
-            font-size: clamp(32px, 4vw, 48px);
-            font-weight: 800;
-            line-height: 1.2;
-            letter-spacing: -1px;
-            margin-bottom: 20px;
-        }
-        
-        .section-subtitle {
-            font-size: 18px;
-            color: var(--text-secondary);
-            line-height: 1.6;
+            background: white;
         }
         
         .features-grid {
-            max-width: 1280px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 32px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 32px;
         }
         
         .feature-card {
-            background: white;
-            border-radius: 20px;
-            padding: 40px 32px;
+            padding: 48px;
+            border-radius: 16px;
             border: 1px solid var(--border);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
         
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-1);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-        
         .feature-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border-color: var(--accent);
         }
         
-        .feature-card:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .feature-icon {
-            width: 56px;
-            height: 56px;
-            background: var(--bg-secondary);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .feature-number {
+            font-size: 32px;
+            font-weight: 900;
+            line-height: 1;
             margin-bottom: 24px;
-            font-size: 24px;
+            display: inline-block;
+            padding: 12px 20px;
+            border-radius: 12px;
+        }
+        
+        .feature-card:nth-child(1) .feature-number {
+            background: #FFA500;
+            color: white;
+        }
+        
+        .feature-card:nth-child(2) .feature-number {
+            background: #4A90E2;
+            color: white;
+        }
+        
+        .feature-card:nth-child(3) .feature-number {
+            background: #9B59B6;
+            color: white;
+        }
+        
+        .feature-card:nth-child(4) .feature-number {
+            background: #1ABC9C;
+            color: white;
+        }
+        
+        .feature-card:nth-child(5) .feature-number {
+            background: #E74C3C;
+            color: white;
+        }
+        
+        .feature-card:nth-child(6) .feature-number {
+            background: #6C5CE7;
+            color: white;
         }
         
         .feature-title {
-            font-size: 20px;
+            font-size: 24px;
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             color: var(--text-primary);
         }
         
         .feature-description {
             color: var(--text-secondary);
-            line-height: 1.6;
+            line-height: 1.5;
+            font-size: 16px;
         }
         
         /* Products Section */
         .products-section {
             padding: 120px 0;
-            background: white;
+            background: var(--bg-secondary);
         }
         
         .products-container {
-            max-width: 1280px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 32px;
         }
         
         .product-showcase {
@@ -561,121 +790,146 @@
         }
         
         .product-content {
-            max-width: 500px;
+            max-width: 600px;
         }
         
         .product-badge {
             display: inline-flex;
             align-items: center;
-            padding: 6px 12px;
-            background: var(--bg-secondary);
-            border-radius: 8px;
-            margin-bottom: 16px;
+            padding: 8px 16px;
+            background: var(--bg-primary);
+            border-radius: 100px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
         }
         
         .product-badge-text {
             font-size: 12px;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             color: var(--accent);
         }
         
         .product-title {
-            font-size: 40px;
+            font-size: 48px;
             font-weight: 800;
-            line-height: 1.2;
-            letter-spacing: -1px;
-            margin-bottom: 20px;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
         }
         
         .product-description {
-            font-size: 18px;
+            font-size: 20px;
             color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 32px;
+            line-height: 1.5;
+            margin-bottom: 40px;
         }
         
         .product-features {
             list-style: none;
-            margin-bottom: 40px;
+            margin-bottom: 48px;
         }
         
         .product-feature {
             display: flex;
             align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 16px;
+            gap: 16px;
+            margin-bottom: 20px;
         }
         
         .feature-check {
             width: 24px;
             height: 24px;
-            background: var(--bg-secondary);
+            background: var(--gradient-primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            color: var(--accent);
+            color: white;
             font-weight: bold;
+            font-size: 14px;
         }
         
         .product-feature-text {
             color: var(--text-secondary);
             line-height: 1.5;
+            font-size: 16px;
         }
         
         .product-visual {
             position: relative;
-        }
-        
-        .product-image {
-            background: var(--gradient-1);
-            border-radius: 24px;
-            padding: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 400px;
-            position: relative;
+        }
+        
+        .product-image {
+            background: white;
+            border-radius: 16px;
+            border: 1px solid var(--border);
             overflow: hidden;
-        }
-        
-        .product-image-content {
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            max-width: 500px;
+            width: 100%;
             position: relative;
-            z-index: 1;
-            text-align: center;
-            color: white;
         }
         
-        .product-image-title {
-            font-size: 28px;
+        .product-label {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 12px;
             font-weight: 700;
-            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
         
-        .product-image-subtitle {
-            font-size: 16px;
-            opacity: 0.9;
+        .product-label.clear360 {
+            color: #FF6B35;
+            border: 1px solid #FF6B35;
         }
         
-        /* Stats Section */
-        .stats-section {
-            padding: 80px 0;
-            background: var(--primary);
+        .product-label.agentium {
+            color: #6366F1;
+            border: 1px solid #6366F1;
+        }
+        
+        .product-label.asurisk {
+            color: #7C3AED;
+            border: 1px solid #7C3AED;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            padding: 20px;
+        }
+
+/* Stats Section */
+.stats-section {
+            background: var(--gradient-primary);
             color: white;
+            padding: 100px 0;
         }
         
         .stats-container {
-            max-width: 1280px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 32px;
         }
         
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 60px;
             text-align: center;
         }
@@ -685,62 +939,218 @@
         }
         
         .stat-number {
-            font-size: 48px;
-            font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 8px;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: 64px;
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin-bottom: 12px;
         }
         
         .stat-label {
-            font-size: 16px;
+            font-size: 18px;
             opacity: 0.8;
+            font-weight: 500;
+        }
+        
+        /* Solutions Section */
+        .solutions-section {
+            padding: 120px 0;
+            background: var(--bg-secondary);
+        }
+        
+        .solutions-catalog {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+        
+        .catalog-section {
+            margin-bottom: 60px;
+        }
+        
+        .catalog-heading {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 32px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+        }
+        
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        
+        .solution-item {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .solution-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            border-color: var(--accent);
+        }
+        
+        .solution-item h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        
+        .solution-item p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin: 0;
+        }
+        
+        .catalog-footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+        }
+        
+        .catalog-footer p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+        
+        /* Resources Section */
+        .resources-section {
+            padding: 120px 0;
+            background: var(--bg-secondary);
+        }
+        
+        .resources-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 32px;
+        }
+        
+        .resource-card {
+            background: white;
+            border-radius: 16px;
+            padding: 48px;
+            transition: all 0.3s ease;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+        
+        .resource-header {
+            margin-bottom: 40px;
+        }
+        
+        .resource-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+        
+        .resource-subtitle {
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+        
+        .resource-links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        
+        .resource-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+        
+        .resource-link:hover {
+            background: white;
+            border-color: var(--accent);
+            transform: translateX(4px);
+        }
+        
+        .resource-link-text {
+            font-weight: 500;
+            font-size: 15px;
+        }
+        
+        .resource-arrow {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .view-all-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            display: block;
+            padding: 16px;
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        
+        .view-all-link:hover {
+            background: var(--accent);
+            color: white;
         }
         
         /* CTA Section */
         .cta-section {
-            padding: 120px 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 160px 0;
+            background: var(--gradient-primary);
             position: relative;
             overflow: hidden;
-        }
-        
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
         }
         
         .cta-content {
             max-width: 800px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 32px;
             text-align: center;
             position: relative;
             z-index: 1;
         }
         
         .cta-title {
-            font-size: clamp(32px, 4vw, 48px);
+            font-size: clamp(40px, 5vw, 64px);
             font-weight: 800;
-            line-height: 1.2;
-            letter-spacing: -1px;
-            margin-bottom: 20px;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
             color: white;
         }
         
         .cta-subtitle {
-            font-size: 20px;
-            margin-bottom: 40px;
-            color: rgba(255, 255, 255, 0.9);
+            font-size: 24px;
+            margin-bottom: 48px;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 400;
         }
         
         .cta-actions {
@@ -752,37 +1162,36 @@
         
         .btn-white {
             background: white;
-            color: var(--accent);
+            color: var(--primary);
         }
         
         .btn-white:hover {
             background: var(--bg-secondary);
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
         }
         
         .btn-outline-white {
             background: transparent;
             color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            border: 2px solid white;
         }
         
         .btn-outline-white:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: white;
+            background: white;
+            color: var(--primary);
         }
         
         /* Footer */
         .footer {
-            background: var(--primary);
-            color: white;
-            padding: 60px 0 30px;
+            background: white;
+            border-top: 1px solid var(--border);
+            padding: 80px 0 40px;
         }
         
         .footer-content {
-            max-width: 1280px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 32px;
         }
         
         .footer-grid {
@@ -793,54 +1202,29 @@
         }
         
         .footer-brand {
-            max-width: 300px;
+            max-width: 400px;
         }
         
         .footer-logo {
-            font-size: 24px;
-            font-weight: 800;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-primary);
         }
         
         .footer-description {
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--text-secondary);
             line-height: 1.6;
-            margin-bottom: 24px;
-        }
-        
-        .footer-social {
-            display: flex;
-            gap: 12px;
-        }
-        
-        .social-link {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-        
-        .social-link:hover {
-            background: var(--accent);
-            transform: translateY(-2px);
+            margin-bottom: 32px;
         }
         
         .footer-column h4 {
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-            opacity: 0.9;
+            letter-spacing: 1.5px;
+            margin-bottom: 24px;
+            color: var(--text-primary);
         }
         
         .footer-links {
@@ -848,22 +1232,22 @@
         }
         
         .footer-links li {
-            margin-bottom: 12px;
+            margin-bottom: 16px;
         }
         
         .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--text-secondary);
             text-decoration: none;
             transition: color 0.2s ease;
         }
         
         .footer-links a:hover {
-            color: white;
+            color: var(--accent);
         }
         
         .footer-bottom {
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -872,25 +1256,25 @@
         }
         
         .footer-copyright {
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--text-secondary);
             font-size: 14px;
         }
         
         .footer-legal {
             display: flex;
-            gap: 24px;
+            gap: 32px;
             list-style: none;
         }
         
         .footer-legal a {
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--text-secondary);
             text-decoration: none;
             font-size: 14px;
             transition: color 0.2s ease;
         }
         
         .footer-legal a:hover {
-            color: white;
+            color: var(--accent);
         }
         
         /* Mobile Menu */
@@ -925,7 +1309,7 @@
         @media (max-width: 1024px) {
             .product-showcase {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 48px;
             }
             
             .product-showcase:nth-child(even) {
@@ -935,6 +1319,24 @@
             .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 40px;
+            }
+            
+            .transformation-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            
+            .transform-arrow {
+                transform: rotate(90deg);
+                margin: 32px 0;
+            }
+            
+            .pillars-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .solution-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         
@@ -952,7 +1354,7 @@
             }
             
             .hero-title {
-                font-size: clamp(32px, 8vw, 48px);
+                font-size: clamp(36px, 10vw, 56px);
             }
             
             .hero-subtitle {
@@ -968,10 +1370,6 @@
                 justify-content: center;
             }
             
-            .trust-logos {
-                gap: 30px;
-            }
-            
             .features-grid {
                 grid-template-columns: 1fr;
             }
@@ -983,7 +1381,7 @@
             
             .footer-grid {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 40px;
             }
             
             .footer-bottom {
@@ -991,22 +1389,35 @@
                 align-items: center;
                 text-align: center;
             }
+            
+            .solution-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .transformation-visual {
+                padding: 40px 24px;
+            }
+            
+            .product-carousel {
+                height: 400px;
+            }
         }
     </style>
 </head>
-<body>
+<body id="top">
     <!-- Navigation -->
     <nav class="nav-container">
         <div class="nav-content">
-            <a href="#" class="logo">
-                <div class="logo-mark">E</div>
-                ElevateNow
-            </a>
+            <a href="#top" class="logo">Elevatenow</a>
             
             <ul class="nav-menu">
+                <li><a href="#why">Why Elevatenow</a></li>
                 <li><a href="#products">Products</a></li>
                 <li><a href="#solutions">Solutions</a></li>
-                <li><a href="#platform">Platform</a></li>
                 <li><a href="#resources">Resources</a></li>
                 <li><a href="#company">Company</a></li>
             </ul>
@@ -1036,7 +1447,7 @@
             
             <h1 class="hero-title">
                 The all-in-one platform<br>
-                for <span class="gradient-text">intelligent insurance</span>
+                for <span class="gradient-text-purple">intelligent insurance</span>
             </h1>
             
             <p class="hero-subtitle">
@@ -1044,54 +1455,46 @@
             </p>
             
             <div class="hero-actions">
-                <a href="#" class="btn btn-primary">
-                    Start Free Trial
-                    <span>→</span>
-                </a>
-                <a href="#" class="btn btn-secondary">
-                    Watch Demo
-                </a>
+                <a href="#" class="btn btn-primary">Start Free Trial →</a>
+                <a href="#" class="btn btn-secondary">Watch Demo</a>
             </div>
             
             <div class="hero-visual">
                 <div class="visual-container">
                     <div class="visual-header">
                         <div class="window-controls">
-                            <span class="window-dot dot-red"></span>
-                            <span class="window-dot dot-yellow"></span>
-                            <span class="window-dot dot-green"></span>
+                            <span class="window-dot"></span>
+                            <span class="window-dot"></span>
+                            <span class="window-dot"></span>
                         </div>
                         <span class="visual-title">Agentium Intelligence Studio</span>
-                        <span style="font-size: 12px; color: #94a3b8; font-style: italic;">[High-res product screenshots coming soon]</span>
                     </div>
-                    <div class="visual-content" style="padding: 0; background: #ffffff; position: relative; display: flex; align-items: center; justify-content: center;">
-                        <div class="product-carousel" style="width: 100%; height: 100%; position: relative;">
-                            <div class="carousel-slide active" style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; opacity: 1; transition: opacity 0.8s ease; background: white;">
-                                <img src="images/launchpad2.png" alt="CLEAR360 Dashboard" style="width: 100%; height: 100%; object-fit: contain; padding: 20px;">
-                                <div style="position: absolute; bottom: 20px; left: 40px; right: 40px; text-align: center; background: rgba(255, 255, 255, 0.95); padding: 12px 20px; border-radius: 12px; backdrop-filter: blur(10px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
-                                    <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 4px; color: #0a0a0a;">CLEAR360 - Intake Automation</h3>
-                                    <p style="font-size: 14px; color: #525252; margin: 0;">Transform 30+ day cycles to real-time intelligence</p>
-                                </div>
-                            </div>
-                            <div class="carousel-slide" style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.8s ease; background: white;">
-                                <img src="images/agentium2.png" alt="Agentium Intelligence" style="width: 100%; height: 100%; object-fit: contain; padding: 20px;">
-                                <div style="position: absolute; bottom: 20px; left: 40px; right: 40px; text-align: center; background: rgba(255, 255, 255, 0.95); padding: 12px 20px; border-radius: 12px; backdrop-filter: blur(10px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
-                                    <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 4px; color: #0a0a0a;">Agentium Intelligence</h3>
-                                    <p style="font-size: 14px; color: #525252; margin: 0;">40+ specialized agents for insurance workflows</p>
-                                </div>
-                            </div>
-                            <div class="carousel-slide" style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.8s ease; background: white;">
-                                <img src="images/asurisk2.png" alt="Asurisk AI Hub" style="width: 100%; height: 100%; object-fit: contain; padding: 20px;">
-                                <div style="position: absolute; bottom: 20px; left: 40px; right: 40px; text-align: center; background: rgba(255, 255, 255, 0.95); padding: 12px 20px; border-radius: 12px; backdrop-filter: blur(10px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
-                                    <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 4px; color: #0a0a0a;">Asurisk AI Hub</h3>
-                                    <p style="font-size: 14px; color: #525252; margin: 0;">360° compliance visibility across all AI initiatives</p>
-                                </div>
+                    <div class="product-carousel">
+                        <div class="carousel-slide active">
+                            <img src="images/carousal_app.png" alt="CLEAR360 Dashboard">
+                            <div class="slide-caption">
+                                <h3>CLEAR360 - Intake Automation</h3>
+                                <p>Transform 30+ day cycles to real-time intelligence</p>
                             </div>
                         </div>
-                        <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 20;">
-                            <span class="carousel-dot active" style="width: 8px; height: 8px; background: #0a0a0a; border-radius: 50%; opacity: 0.3; cursor: pointer; transition: opacity 0.3s;"></span>
-                            <span class="carousel-dot" style="width: 8px; height: 8px; background: #0a0a0a; border-radius: 50%; opacity: 0.3; cursor: pointer; transition: opacity 0.3s;"></span>
-                            <span class="carousel-dot" style="width: 8px; height: 8px; background: #0a0a0a; border-radius: 50%; opacity: 0.3; cursor: pointer; transition: opacity 0.3s;"></span>
+                        <div class="carousel-slide">
+                            <img src="images/agentium1.png" alt="Agentium Intelligence">
+                            <div class="slide-caption">
+                                <h3>Agentium Intelligence</h3>
+                                <p>40+ specialized agents for insurance workflows</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="images/asurisk2.png" alt="Asurisk AI Hub">
+                            <div class="slide-caption">
+                                <h3>Asurisk AI Hub</h3>
+                                <p>360° compliance visibility across all AI initiatives</p>
+                            </div>
+                        </div>
+                        <div class="carousel-dots">
+                            <span class="carousel-dot active"></span>
+                            <span class="carousel-dot"></span>
+                            <span class="carousel-dot"></span>
                         </div>
                     </div>
                 </div>
@@ -1100,15 +1503,102 @@
     </section>
     
     <!-- Trust Section -->
-    <section class="trust-section">
+    <section class="trust-section" id="why">
         <div class="trust-content">
             <p class="trust-text">Built by Visionary Industry Experts</p>
-            <div style="max-width: 900px; margin: 0 auto; text-align: center; padding: 0 24px;">
-                <p style="font-size: 18px; line-height: 1.6; color: var(--text-secondary);">
-                    Created by practitioners who've architected AI transformations at Fortune 100 carriers. 
-                    We've lived through the challenges of scaling AI in heavily regulated environments and know 
-                    what it takes to build insurance intelligence that delivers real business outcomes at enterprise scale.
+            <p class="trust-description">
+                Created by practitioners who've architected AI transformations at Fortune 100 carriers. 
+                We've lived through the challenges of scaling AI in heavily regulated environments and know 
+                what it takes to build insurance intelligence that delivers real business outcomes at enterprise scale.
+            </p>
+        </div>
+    </section>
+    
+    <!-- Why Section -->
+    <section class="why-section">
+        <div class="why-container">
+            <div class="section-header-compact">
+                <h2 class="section-title">Why the industry needs<br>a new architecture</h2>
+                <p class="section-description">
+                    Insurance transformation demands more than adding AI features to legacy systems. The industry needs a fundamental architectural rethinking—one where intelligence isn't bolted on as an afterthought, but embedded as the foundation. Carriers deserve platforms built from day one for agents, not humans.
                 </p>
+            </div>
+            
+            <div class="transformation-visual">
+                <div class="transformation-grid">
+                    <div class="state-card">
+                        <div class="state-label">Current State</div>
+                        <h4 class="state-title">Retrofitted AI</h4>
+                        
+                        <div class="state-layers">
+                            <div class="layer layer-old">Human-Centric UI</div>
+                            <div class="layer layer-old">Rigid Business Logic</div>
+                            <div class="layer layer-old">Legacy Core Systems</div>
+                            <div class="layer layer-old" style="position: relative;">
+                                AI Features
+                                <span class="retrofit-badge">Retrofitted</span>
+                            </div>
+                        </div>
+                        
+                        <div class="state-outcome outcome-old">
+                            30-day cycles • 70% administrative overhead
+                        </div>
+                    </div>
+                    
+                    <div class="transform-arrow">
+                        <div class="arrow-icon">→</div>
+                        <div class="arrow-text">Transforms</div>
+                    </div>
+                    
+                    <div class="state-card">
+                        <div class="state-label">Target State</div>
+                        <h4 class="state-title">Agentic-First Platform</h4>
+                        
+                        <div class="state-layers">
+                            <div class="layer layer-new">AI Agent Orchestration</div>
+                            <div class="layer layer-new">Embedded Intelligence</div>
+                            <div class="layer layer-new">Adaptive Workflows</div>
+                            <div class="layer layer-new" style="position: relative;">
+                                Built-in Governance
+                                <span class="native-badge">Native</span>
+                            </div>
+                        </div>
+                        
+                        <div class="state-outcome outcome-new">
+                            Real-time decisions • 50% faster processing
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <div class="pillar-icon">01</div>
+                    <h4 class="pillar-title">Cross-Platform Intelligence</h4>
+                    <p class="pillar-description">
+                        ServiceNow, Guidewire, and legacy systems orchestrated as one unified platform. Our agents span systems, not silos.
+                    </p>
+                </div>
+                
+                <div class="pillar-card">
+                    <div class="pillar-icon">02</div>
+                    <h4 class="pillar-title">Insurance-Native AI</h4>
+                    <p class="pillar-description">
+                        40+ specialized agents understand ACORD forms, NAIC codes, and carrier appetites from day one. No training required.
+                    </p>
+                </div>
+                
+                <div class="pillar-card">
+                    <div class="pillar-icon">03</div>
+                    <h4 class="pillar-title">Governance at Scale</h4>
+                    <p class="pillar-description">
+                        42 regulatory requirements monitored automatically. Compliance that adapts and grows with your AI ambitions.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="why-tagline">
+                <p class="tagline-text">Scaling AI infrastructure for tomorrow's carriers</p>
             </div>
         </div>
     </section>
@@ -1127,7 +1617,7 @@
         
         <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-icon" style="background: linear-gradient(135deg, #fbbf24, #f59e0b); font-family: 'Inter', sans-serif; font-weight: 900;">01</div>
+                <div class="feature-number">01</div>
                 <h3 class="feature-title">Lightning-Fast Processing</h3>
                 <p class="feature-description">
                     Transform 30-day cycles into real-time decisions with AI agents that understand ACORD forms, policy language, and carrier appetites from day one.
@@ -1135,7 +1625,7 @@
             </div>
             
             <div class="feature-card">
-                <div class="feature-icon" style="background: linear-gradient(135deg, #60a5fa, #3b82f6); font-family: 'Inter', sans-serif; font-weight: 900;">02</div>
+                <div class="feature-number">02</div>
                 <h3 class="feature-title">Enterprise Security</h3>
                 <p class="feature-description">
                     Deploy with confidence using SOC 2 Type II certified infrastructure, end-to-end encryption, and compliance with 42+ regulatory requirements.
@@ -1143,7 +1633,7 @@
             </div>
             
             <div class="feature-card">
-                <div class="feature-icon" style="background: linear-gradient(135deg, #c084fc, #a855f7); font-family: 'Inter', sans-serif; font-weight: 900;">03</div>
+                <div class="feature-number">03</div>
                 <h3 class="feature-title">Precision Accuracy</h3>
                 <p class="feature-description">
                     Fine-tune models on your proprietary data with built-in RAG, providing verifiable outputs grounded in your sources of truth.
@@ -1151,7 +1641,7 @@
             </div>
             
             <div class="feature-card">
-                <div class="feature-icon" style="background: linear-gradient(135deg, #34d399, #10b981); font-family: 'Inter', sans-serif; font-weight: 900;">04</div>
+                <div class="feature-number">04</div>
                 <h3 class="feature-title">Seamless Integration</h3>
                 <p class="feature-description">
                     Connect ServiceNow, Guidewire, and legacy systems through one unified platform. Our agents span systems, not silos.
@@ -1159,7 +1649,7 @@
             </div>
             
             <div class="feature-card">
-                <div class="feature-icon" style="background: linear-gradient(135deg, #f87171, #ef4444); font-family: 'Inter', sans-serif; font-weight: 900;">05</div>
+                <div class="feature-number">05</div>
                 <h3 class="feature-title">Intelligent Analytics</h3>
                 <p class="feature-description">
                     Monitor AI performance, detect model drift, and optimize workflows with real-time insights and predictive analytics.
@@ -1167,7 +1657,7 @@
             </div>
             
             <div class="feature-card">
-                <div class="feature-icon" style="background: linear-gradient(135deg, #818cf8, #6366f1); font-family: 'Inter', sans-serif; font-weight: 900;">06</div>
+                <div class="feature-number">06</div>
                 <h3 class="feature-title">Rapid Deployment</h3>
                 <p class="feature-description">
                     Go from proof-of-concept to production in days with carrier-certified blueprints and no-code workflow development.
@@ -1215,11 +1705,9 @@
                     <a href="#" class="btn btn-primary">Learn More →</a>
                 </div>
                 <div class="product-visual">
-                    <div class="product-image" style="background: #ffffff; padding: 40px; border: 1px solid var(--border); position: relative;">
-                        <img src="images/launchpad2.png" alt="CLEAR360 Dashboard" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">
-                        <div class="product-badge" style="position: absolute; top: 20px; right: 20px; background: white; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
-                            <span class="product-badge-text" style="color: #ea580c;">CLEAR360</span>
-                        </div>
+                    <div class="product-image">
+                        <span class="product-label clear360">CLEAR360</span>
+                        <img src="images/launchpad2.png" alt="CLEAR360 Dashboard">
                     </div>
                 </div>
             </div>
@@ -1250,11 +1738,9 @@
                     <a href="#" class="btn btn-primary">Explore Agents →</a>
                 </div>
                 <div class="product-visual">
-                    <div class="product-image" style="background: #ffffff; padding: 40px; border: 1px solid var(--border); position: relative;">
-                        <img src="images/agentium2.png" alt="Agentium Intelligence Interface" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">
-                        <div class="product-badge" style="position: absolute; top: 20px; right: 20px; background: white; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
-                            <span class="product-badge-text" style="color: #3b82f6;">AGENTIUM</span>
-                        </div>
+                    <div class="product-image">
+                        <span class="product-label agentium">AGENTIUM</span>
+                        <img src="images/carousal_ag_3.png" alt="Agentium Intelligence">
                     </div>
                 </div>
             </div>
@@ -1285,11 +1771,9 @@
                     <a href="#" class="btn btn-primary">View Hub →</a>
                 </div>
                 <div class="product-visual">
-                    <div class="product-image" style="background: #ffffff; padding: 40px; border: 1px solid var(--border); position: relative;">
-                        <img src="images/asurisk2.png" alt="Asurisk AI Hub Dashboard" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">
-                        <div class="product-badge" style="position: absolute; top: 20px; right: 20px; background: white; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
-                            <span class="product-badge-text" style="color: #8b5cf6;">ASURISK</span>
-                        </div>
+                    <div class="product-image">
+                        <span class="product-label asurisk">ASURISK</span>
+                        <img src="images/asurisk2.png" alt="Asurisk AI Hub">
                     </div>
                 </div>
             </div>
@@ -1320,6 +1804,193 @@
         </div>
     </section>
     
+    <!-- Solutions Section -->
+    <section class="solutions-section" id="solutions">
+        <div class="section-header">
+            <h2 class="section-title">Ready-to-Deploy Solutions Catalog</h2>
+            <p class="section-subtitle">
+                40+ specialized insurance agents and enterprise tools ready for immediate deployment
+            </p>
+        </div>
+        
+        <div class="solutions-catalog">
+            <div class="catalog-section">
+                <h3 class="catalog-heading">Underwriting & Risk Assessment</h3>
+                <div class="solution-grid">
+                    <div class="solution-item">
+                        <h4>InsurVerify</h4>
+                        <p>Data validation and completeness verification</p>
+                    </div>
+                    <div class="solution-item">
+                        <h4>ExposureInsights</h4>
+                        <p>Risk analysis and catastrophe exposure</p>
+                    </div>
+                    <div class="solution-item">
+                        <h4>LossInsights</h4>
+                        <p>Loss history consolidation and predictive analysis</p>
+                    </div>
+                    <div class="solution-item">
+                        <h4>EligibilityChecker</h4>
+                        <p>Appetite and underwriting guidelines validation</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="catalog-section">
+                <h3 class="catalog-heading">Compliance & Regulatory</h3>
+                <div class="solution-grid">
+                    <div class="solution-item">
+                        <h4>InsuranceControlsAdvisor</h4>
+                        <p>Audit controls monitoring and oversight</p>
+                    </div>
+                    <div class="solution-item">
+                        <h4>RegulatoryWatch</h4>
+                        <p>Real-time regulatory change detection</p>
+                    </div>
+                    <div class="solution-item">
+                        <h4>ComplianceMonitor</h4>
+                        <p>42 requirements continuous tracking</p>
+                    </div>
+                    <div class="solution-item">
+                        <h4>AuditTrailGen</h4>
+                        <p>Automated audit documentation</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="catalog-section">
+                <h3 class="catalog-heading">Document Processing</h3>
+                <div class="solution-grid">
+                    <div class="solution-item">
+                        <h4>PolicySummarizer</h4>
+                        <p>Automated policy analysis and summarization</p>
+                    </div>
+                    <div class="solution-item">
+                        <h4>DocumentExtractor</h4>
+                        <p>ACORD form processing and extraction</p>
+                    </div>
+                    <div class="solution-item">
+                        <h4>ClaimsClassifier</h4>
+                        <p>Intelligent claims categorization</p>
+                    </div>
+                    <div class="solution-item">
+                        <h4>SubmissionParser</h4>
+                        <p>Multi-format submission processing</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="catalog-section">
+                <h3 class="catalog-heading">Enterprise Integration</h3>
+                <div class="solution-grid">
+                    <div class="solution-item">
+                        <h4>Workflow Studio</h4>
+                        <p>Visual workflow designer with drag-drop</p>
+                    </div>
+                    <div class="solution-item">
+                        <h4>Agent Orchestrator</h4>
+                        <p>Centralized agent management and monitoring</p>
+                    </div>
+                    <div class="solution-item">
+                        <h4>ServiceNow Bridge</h4>
+                        <p>Native platform integration</p>
+                    </div>
+                    <div class="solution-item">
+                        <h4>Quality Intelligence</h4>
+                        <p>Real-time performance analytics</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="catalog-footer">
+            <p>Plus 20+ additional specialized agents for claims, customer service, fraud detection, and more</p>
+            <a href="#" class="btn btn-primary">View Complete Catalog →</a>
+        </div>
+    </section>
+    
+    <!-- Resources Section -->
+    <section class="resources-section" id="resources">
+        <div class="section-header">
+            <h2 class="section-title">Resources & Insights</h2>
+            <p class="section-subtitle">
+                Deep dive into insurance intelligence with expert insights and comprehensive documentation
+            </p>
+        </div>
+        
+        <div class="resources-grid">
+            <div class="resource-card">
+                <div class="resource-header">
+                    <h3 class="resource-title">Articles & Insights</h3>
+                    <p class="resource-subtitle">Expert perspectives on insurance AI</p>
+                </div>
+                <div class="resource-links">
+                    <a href="#" class="resource-link">
+                        <span class="resource-link-text">42 Regulatory Requirements Guide</span>
+                        <span class="resource-arrow">→</span>
+                    </a>
+                    <a href="#" class="resource-link">
+                        <span class="resource-link-text">From Admin to Strategic Intelligence</span>
+                        <span class="resource-arrow">→</span>
+                    </a>
+                </div>
+                <a href="#" class="view-all-link">View all articles →</a>
+            </div>
+            
+            <div class="resource-card">
+                <div class="resource-header">
+                    <h3 class="resource-title">Case Studies</h3>
+                    <p class="resource-subtitle">Real-world implementations</p>
+                </div>
+                <div class="resource-links">
+                    <a href="#" class="resource-link">
+                        <span class="resource-link-text">Regional Carrier: 50% Faster Processing</span>
+                        <span class="resource-arrow">→</span>
+                    </a>
+                    <a href="#" class="resource-link">
+                        <span class="resource-link-text">Specialty Insurer: Workflow Transformation</span>
+                        <span class="resource-arrow">→</span>
+                    </a>
+                    <a href="#" class="resource-link">
+                        <span class="resource-link-text">Enterprise: 40+ Agents Deployment</span>
+                        <span class="resource-arrow">→</span>
+                    </a>
+                    <a href="#" class="resource-link">
+                        <span class="resource-link-text">Automated Compliance Success Story</span>
+                        <span class="resource-arrow">→</span>
+                    </a>
+                </div>
+                <a href="#" class="view-all-link">View all case studies →</a>
+            </div>
+            
+            <div class="resource-card">
+                <div class="resource-header">
+                    <h3 class="resource-title">Documentation & Wiki</h3>
+                    <p class="resource-subtitle">Comprehensive guides</p>
+                </div>
+                <div class="resource-links">
+                    <a href="#" class="resource-link">
+                        <span class="resource-link-text">Agentium Intelligence - Getting Started</span>
+                        <span class="resource-arrow">→</span>
+                    </a>
+                    <a href="#" class="resource-link">
+                        <span class="resource-link-text">CLEAR360 Implementation Guide</span>
+                        <span class="resource-arrow">→</span>
+                    </a>
+                    <a href="#" class="resource-link">
+                        <span class="resource-link-text">Asurisk Hub Configuration</span>
+                        <span class="resource-arrow">→</span>
+                    </a>
+                    <a href="#" class="resource-link">
+                        <span class="resource-link-text">API Documentation & Examples</span>
+                        <span class="resource-arrow">→</span>
+                    </a>
+                </div>
+                <a href="#" class="view-all-link">View documentation →</a>
+            </div>
+        </div>
+    </section>
+    
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="cta-content">
@@ -1330,13 +2001,8 @@
                 Join leading carriers already leveraging AI to redefine what's possible.
             </p>
             <div class="cta-actions">
-                <a href="#" class="btn btn-white">
-                    Request Demo
-                    <span>→</span>
-                </a>
-                <a href="#" class="btn btn-outline-white">
-                    Contact Sales
-                </a>
+                <a href="#" class="btn btn-white">Request Demo →</a>
+                <a href="#" class="btn btn-outline-white">Contact Sales</a>
             </div>
         </div>
     </section>
@@ -1346,18 +2012,10 @@
         <div class="footer-content">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <div class="footer-logo">
-                        <div class="logo-mark" style="background: white; color: var(--primary);">E</div>
-                        ElevateNow
-                    </div>
+                    <div class="footer-logo">Elevatenow</div>
                     <p class="footer-description">
                         The industry's only agentic-native platform for insurance vertical. Built from the ground up to transform commercial insurance.
                     </p>
-                    <div class="footer-social">
-                        <a href="#" class="social-link" style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px;">X</a>
-                        <a href="#" class="social-link" style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 12px;">in</a>
-                        <a href="#" class="social-link" style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 18px;">▸</a>
-                    </div>
                 </div>
                 
                 <div class="footer-column">
@@ -1393,7 +2051,7 @@
             
             <div class="footer-bottom">
                 <p class="footer-copyright">
-                    © 2024 ElevateNow. All rights reserved.
+                    © 2024 Elevatenow. All rights reserved.
                 </p>
                 <ul class="footer-legal">
                     <li><a href="#">Privacy Policy</a></li>
@@ -1427,7 +2085,7 @@
             const currentScroll = window.pageYOffset;
             
             if (currentScroll > 100) {
-                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
             } else {
                 navbar.style.boxShadow = 'none';
             }
@@ -1444,24 +2102,18 @@
             mobileMenuBtn.classList.toggle('active');
         });
         
-        // Hero carousel functionality
+        // Product carousel
         const slides = document.querySelectorAll('.carousel-slide');
         const dots = document.querySelectorAll('.carousel-dot');
         let currentSlide = 0;
         
         function showSlide(index) {
             slides.forEach((slide, i) => {
-                slide.style.opacity = i === index ? '1' : '0';
+                slide.classList.toggle('active', i === index);
             });
             
             dots.forEach((dot, i) => {
-                if (i === index) {
-                    dot.classList.add('active');
-                    dot.style.opacity = '1';
-                } else {
-                    dot.classList.remove('active');
-                    dot.style.opacity = '0.5';
-                }
+                dot.classList.toggle('active', i === index);
             });
         }
         
@@ -1470,7 +2122,7 @@
             showSlide(currentSlide);
         }
         
-        // Auto-advance slides every 5 seconds
+        // Auto-advance carousel
         setInterval(nextSlide, 5000);
         
         // Click handlers for dots
