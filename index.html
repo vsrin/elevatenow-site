@@ -951,77 +951,148 @@
             font-weight: 500;
         }
         
-        /* Solutions Section */
-        .solutions-section {
+        /* About Section */
+        .about-section {
             padding: 120px 0;
-            background: var(--bg-secondary);
+            background: white;
         }
         
-        .solutions-catalog {
-            max-width: 1400px;
+        .about-container {
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 32px;
         }
         
-        .catalog-section {
-            margin-bottom: 60px;
+        .about-header {
+            text-align: center;
+            margin-bottom: 80px;
         }
         
-        .catalog-heading {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 32px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid var(--accent);
-            display: inline-block;
-        }
-        
-        .solution-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-        
-        .solution-item {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 24px;
-            transition: all 0.3s ease;
-        }
-        
-        .solution-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-            border-color: var(--accent);
-        }
-        
-        .solution-item h4 {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-        
-        .solution-item p {
+        .about-tagline {
             font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+        
+        .about-title {
+            font-size: clamp(36px, 4vw, 56px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+        }
+        
+        .about-intro {
+            font-size: 20px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .about-story-grid {
+            display: grid;
+            gap: 80px;
+            margin-bottom: 80px;
+        }
+        
+        .story-block {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 48px;
+            align-items: center;
+        }
+        
+        .story-block:nth-child(even) {
+            grid-template-columns: 2fr 1fr;
+        }
+        
+        .story-block:nth-child(even) .story-icon {
+            order: 2;
+        }
+        
+        .story-icon {
+            width: 120px;
+            height: 120px;
+            background: var(--gradient-accent);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            margin: 0 auto;
+        }
+        
+        .story-content h3 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .story-content p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+        
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-bottom: 80px;
+        }
+        
+        .expertise-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .expertise-number {
+            font-size: 48px;
+            font-weight: 800;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+        }
+        
+        .expertise-label {
+            font-size: 16px;
             color: var(--text-secondary);
             line-height: 1.5;
-            margin: 0;
         }
         
-        .catalog-footer {
+        .about-closing {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 64px;
+            border-radius: 20px;
             text-align: center;
-            margin-top: 60px;
-            padding-top: 40px;
-            border-top: 1px solid var(--border);
         }
         
-        .catalog-footer p {
-            font-size: 18px;
-            color: var(--text-secondary);
+        .about-closing h3 {
+            font-size: 36px;
+            font-weight: 800;
             margin-bottom: 24px;
+            line-height: 1.2;
+        }
+        
+        .about-closing p {
+            font-size: 20px;
+            line-height: 1.6;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
         }
         
         /* Resources Section */
@@ -1277,6 +1348,307 @@
             color: var(--accent);
         }
         
+        /* Demo Request Page Styles */
+        .demo-page {
+            display: none;
+            min-height: 100vh;
+            background: var(--gradient-subtle);
+            padding-top: 100px;
+        }
+
+        .demo-page.active {
+            display: block;
+        }
+
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .demo-form-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border);
+        }
+
+        .demo-info-section {
+            padding: 2rem 0;
+        }
+
+        .demo-form-header {
+            margin-bottom: 3rem;
+        }
+
+        .demo-form-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .demo-form-header p {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            line-height: 1.6;
+        }
+
+        .form-steps {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+            gap: 1rem;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex: 1;
+        }
+
+        .step-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 2px solid var(--border);
+            color: var(--text-tertiary);
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .step-number.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .step-number.completed {
+            background: #10b981;
+            color: white;
+            border-color: #10b981;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .step-title.active {
+            color: var(--text-primary);
+        }
+
+        .step-connector {
+            flex: 1;
+            height: 2px;
+            background: var(--border);
+            margin: 0 1rem;
+        }
+
+        .step-connector.completed {
+            background: #10b981;
+        }
+
+        .form-content {
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            background: white;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn-back {
+            background: none;
+            border: none;
+            color: var(--accent);
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .btn-back:hover {
+            color: var(--accent-hover);
+        }
+
+        .btn-back:disabled {
+            color: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        .btn-next {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-next:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-next:disabled {
+            background: #d1d5db;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+
+        .info-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .info-list li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .info-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .contact-info {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .contact-info h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .contact-info p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .contact-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .contact-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+        
         /* Mobile Menu */
         .mobile-menu-btn {
             display: none;
@@ -1335,8 +1707,22 @@
                 grid-template-columns: 1fr;
             }
             
-            .solution-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .story-block,
+            .story-block:nth-child(even) {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .story-block:nth-child(even) .story-icon {
+                order: 0;
+            }
+            
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .demo-container {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -1390,10 +1776,6 @@
                 text-align: center;
             }
             
-            .solution-grid {
-                grid-template-columns: 1fr;
-            }
-            
             .resources-grid {
                 grid-template-columns: 1fr;
             }
@@ -1405,10 +1787,26 @@
             .product-carousel {
                 height: 400px;
             }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-steps {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .step-connector {
+                display: none;
+            }
         }
     </style>
 </head>
 <body id="top">
+    <!-- Main Website Content -->
+    <div id="main-content">
+    
     <!-- Navigation -->
     <nav class="nav-container">
         <div class="nav-content">
@@ -1417,14 +1815,13 @@
             <ul class="nav-menu">
                 <li><a href="#why">Why Elevatenow</a></li>
                 <li><a href="#products">Products</a></li>
-                <li><a href="#solutions">Solutions</a></li>
                 <li><a href="#resources">Resources</a></li>
-                <li><a href="#company">Company</a></li>
+                <li><a href="#about">About</a></li>
             </ul>
             
             <div class="nav-actions">
                 <a href="#" class="nav-btn nav-btn-secondary">Sign In</a>
-                <a href="#" class="nav-btn nav-btn-primary">Get Started</a>
+                <a href="#" class="nav-btn nav-btn-primary" onclick="showDemoPage()">Get Started</a>
             </div>
             
             <button class="mobile-menu-btn">
@@ -1447,7 +1844,7 @@
             
             <h1 class="hero-title">
                 Adaptive Insurance Engineered for<br>
-                <span class="gradient-text-purple">What’s Next at Scale</span>
+                <span class="gradient-text-purple">What's Next at Scale</span>
             </h1>
             
             <p class="hero-subtitle">
@@ -1455,7 +1852,7 @@
             </p>
             
             <div class="hero-actions">
-                <a href="#" class="btn btn-primary">Start Free Trial →</a>
+                <a href="#" class="btn btn-primary" onclick="showDemoPage()">Start Free Trial →</a>
                 <a href="#" class="btn btn-secondary">Watch Demo</a>
             </div>
             
@@ -1691,15 +2088,15 @@
                     <ul class="product-features">
                         <li class="product-feature">
                             <span class="feature-check">✓</span>
-                            <span class="product-feature-text">40-60% faster processing with automated validation</span>
+                            <span class="product-feature-text">40-60% faster processing - redirect underwriters from administrative tasks to strategic risk assessment</span>
                         </li>
                         <li class="product-feature">
                             <span class="feature-check">✓</span>
-                            <span class="product-feature-text">Cross-reference multiple sources in real-time</span>
+                            <span class="product-feature-text">Automated validation - cross-reference multiple sources and 3rd party databases in real-time</span>
                         </li>
                         <li class="product-feature">
                             <span class="feature-check">✓</span>
-                            <span class="product-feature-text">Intelligent triage for immediate eligibility screening</span>
+                            <span class="product-feature-text">Risk appetite alignment - immediate eligibility screening with intelligent triage for "FAST NO" decisions</span>
                         </li>
                     </ul>
                     <a href="#" class="btn btn-primary">Learn More →</a>
@@ -1718,20 +2115,20 @@
                         <span class="product-badge-text">Agentium : Insurance AI Agents</span>
                     </div>
                     <p class="product-description">
-                        40+ vertical agents designed specifically for insurance workflows. From ACORDFormsExpert to ClaimsIntelligencePro.
+                        Leverage out of the box vertical agents or tailor it to your unique needs and deploy them anywhere, with built-in compliance to adapt to regulatory changes.
                     </p>
                     <ul class="product-features">
                         <li class="product-feature">
                             <span class="feature-check">✓</span>
-                            <span class="product-feature-text">Pre-built agents for every insurance workflow</span>
+                            <span class="product-feature-text">Pre-built intelligence for every insurance workflow</span>
                         </li>
                         <li class="product-feature">
                             <span class="feature-check">✓</span>
-                            <span class="product-feature-text">No-code development with enterprise security</span>
+                            <span class="product-feature-text">Seamless ServiceNow integration with no-code workflow development</span>
                         </li>
                         <li class="product-feature">
                             <span class="feature-check">✓</span>
-                            <span class="product-feature-text">Built-in compliance and regulatory adaptation</span>
+                            <span class="product-feature-text">Real-time performance monitoring with quality intelligence engine</span>
                         </li>
                     </ul>
                     <a href="#" class="btn btn-primary">Explore Agents →</a>
@@ -1802,110 +2199,72 @@
         </div>
     </section>
     
-    <!-- Solutions Section -->
-    <section class="solutions-section" id="solutions">
-        <div class="section-header">
-            <h2 class="section-title">Ready-to-Deploy Solutions Catalog</h2>
-            <p class="section-subtitle">
-                40+ specialized insurance agents and enterprise tools ready for immediate deployment
+<!-- About Section -->
+<section class="about-section" id="about">
+    <div class="about-container">
+        <div class="about-header">
+            <p class="about-tagline">Expertise in Action</p>
+            <h2 class="about-title">Built by Those Who've Lived It</h2>
+            <p class="about-intro">
+                We've spent decades inside the machine—leading digital transformations at Fortune 100 carriers, building enterprise AI systems, and watching talented underwriters waste 70% of their time on administrative archaeology.
             </p>
         </div>
         
-        <div class="solutions-catalog">
-            <div class="catalog-section">
-                <h3 class="catalog-heading">Underwriting & Risk Assessment</h3>
-                <div class="solution-grid">
-                    <div class="solution-item">
-                        <h4>InsurVerify</h4>
-                        <p>Data validation and completeness verification</p>
-                    </div>
-                    <div class="solution-item">
-                        <h4>ExposureInsights</h4>
-                        <p>Risk analysis and catastrophe exposure</p>
-                    </div>
-                    <div class="solution-item">
-                        <h4>LossInsights</h4>
-                        <p>Loss history consolidation and predictive analysis</p>
-                    </div>
-                    <div class="solution-item">
-                        <h4>EligibilityChecker</h4>
-                        <p>Appetite and underwriting guidelines validation</p>
-                    </div>
+        <div class="about-story-grid">
+            <div class="story-block">
+                <div class="story-icon">01</div>
+                <div class="story-content">
+                    <h3>The Realization</h3>
+                    <p>
+                        We saw the pattern: Every 'revolutionary' insurance platform was built backwards—starting with technology and hoping insurance would adapt. But insurance doesn't adapt. It demands native fluency. The industry needed builders who understood that a 30-day submission cycle isn't just inefficient—it's a competitive death sentence.
+                    </p>
                 </div>
             </div>
             
-            <div class="catalog-section">
-                <h3 class="catalog-heading">Compliance & Regulatory</h3>
-                <div class="solution-grid">
-                    <div class="solution-item">
-                        <h4>InsuranceControlsAdvisor</h4>
-                        <p>Audit controls monitoring and oversight</p>
-                    </div>
-                    <div class="solution-item">
-                        <h4>RegulatoryWatch</h4>
-                        <p>Real-time regulatory change detection</p>
-                    </div>
-                    <div class="solution-item">
-                        <h4>ComplianceMonitor</h4>
-                        <p>42 requirements continuous tracking</p>
-                    </div>
-                    <div class="solution-item">
-                        <h4>AuditTrailGen</h4>
-                        <p>Automated audit documentation</p>
-                    </div>
+            <div class="story-block">
+                <div class="story-icon">02</div>
+                <div class="story-content">
+                    <h3>Our Differentiation</h3>
+                    <p>
+                        Elevatenow exists because insurance transformation needs builders who've lived it. Our leadership has collectively driven $500M+ in digital transformations, architected AI systems processing billions in premiums, and scaled enterprise technology across global markets. We bring proven insight to every workflow.
+                    </p>
                 </div>
             </div>
             
-            <div class="catalog-section">
-                <h3 class="catalog-heading">Document Processing</h3>
-                <div class="solution-grid">
-                    <div class="solution-item">
-                        <h4>PolicySummarizer</h4>
-                        <p>Automated policy analysis and summarization</p>
-                    </div>
-                    <div class="solution-item">
-                        <h4>DocumentExtractor</h4>
-                        <p>ACORD form processing and extraction</p>
-                    </div>
-                    <div class="solution-item">
-                        <h4>ClaimsClassifier</h4>
-                        <p>Intelligent claims categorization</p>
-                    </div>
-                    <div class="solution-item">
-                        <h4>SubmissionParser</h4>
-                        <p>Multi-format submission processing</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="catalog-section">
-                <h3 class="catalog-heading">Enterprise Integration</h3>
-                <div class="solution-grid">
-                    <div class="solution-item">
-                        <h4>Workflow Studio</h4>
-                        <p>Visual workflow designer with drag-drop</p>
-                    </div>
-                    <div class="solution-item">
-                        <h4>Agent Orchestrator</h4>
-                        <p>Centralized agent management and monitoring</p>
-                    </div>
-                    <div class="solution-item">
-                        <h4>ServiceNow Bridge</h4>
-                        <p>Native platform integration</p>
-                    </div>
-                    <div class="solution-item">
-                        <h4>Quality Intelligence</h4>
-                        <p>Real-time performance analytics</p>
-                    </div>
+            <div class="story-block">
+                <div class="story-icon">03</div>
+                <div class="story-content">
+                    <h3>The Promise</h3>
+                    <p>
+                        We don't sell software. We deliver expertise engineered into systems—where every workflow speaks insurance, every agent understands carrier reality, and compliance isn't an afterthought but architecture. For ServiceNow and its clients, this is more than an app—it's a leap into insurance transformation, guided by those who know it best.
+                    </p>
                 </div>
             </div>
         </div>
         
-        <div class="catalog-footer">
-            <p>Plus 20+ additional specialized agents for claims, customer service, fraud detection, and more</p>
-            <a href="#" class="btn btn-primary">View Complete Catalog →</a>
+        <div class="expertise-grid">
+            <div class="expertise-card">
+                <div class="expertise-number">$500M+</div>
+                <div class="expertise-label">Digital transformations architected</div>
+            </div>
+            <div class="expertise-card">
+                <div class="expertise-number">25+</div>
+                <div class="expertise-label">Years scaling AI at Fortune 100</div>
+            </div>
+            <div class="expertise-card">
+                <div class="expertise-number">Billions</div>
+                <div class="expertise-label">In premiums processed through our systems</div>
+            </div>
         </div>
-    </section>
+        
+        <div class="about-closing">
+            <h3>Insurance Intelligence That Knows Insurance</h3>
+            <p>
+                Built by practitioners who've architected the systems, led the partnerships, and built the ecosystems that define modern insurance operations. We understand what works—and what doesn't—when bridging cutting-edge technology with real-world business outcomes.
+            </p>
+        </div>
+    </div>
+</section>
     
     <!-- Resources Section -->
     <section class="resources-section" id="resources">
@@ -1999,7 +2358,7 @@
                 Join leading carriers already leveraging AI to redefine what's possible.
             </p>
             <div class="cta-actions">
-                <a href="#" class="btn btn-white">Request Demo →</a>
+                <a href="#" class="btn btn-white" onclick="showDemoPage()">Request Demo →</a>
                 <a href="#" class="btn btn-outline-white">Contact Sales</a>
             </div>
         </div>
@@ -2027,19 +2386,19 @@
                 </div>
                 
                 <div class="footer-column">
-                    <h4>Solutions</h4>
+                    <h4>Resources</h4>
                     <ul class="footer-links">
-                        <li><a href="#">Underwriting</a></li>
-                        <li><a href="#">Claims Processing</a></li>
-                        <li><a href="#">Risk Assessment</a></li>
-                        <li><a href="#">Compliance</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Articles</a></li>
+                        <li><a href="#">Support</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h4>Company</h4>
                     <ul class="footer-links">
-                        <li><a href="#">About Us</a></li>
+                        <li><a href="#about">About Us</a></li>
                         <li><a href="#">Careers</a></li>
                         <li><a href="#">Blog</a></li>
                         <li><a href="#">Contact</a></li>
@@ -2060,76 +2419,392 @@
         </div>
     </footer>
     
-    <script>
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+    </div>
+    <!-- End Main Website Content -->
+ 
+    <!-- Demo Request Page content continues on next message due to length -->
+     <!-- Demo Request Page -->
+   <div id="demo-page" class="demo-page">
+    <div class="demo-container">
+        <div class="demo-form-section">
+            <div class="demo-form-header">
+                <h1>Request a Demo</h1>
+                <p>See how ElevateNow can transform your insurance operations in 30 minutes</p>
+            </div>
+
+            <div class="form-steps">
+                <div class="step">
+                    <div class="step-number active" id="step-1-number">1</div>
+                    <div class="step-title active" id="step-1-title">Contact Information</div>
+                </div>
+                <div class="step-connector" id="connector-1"></div>
+                <div class="step">
+                    <div class="step-number" id="step-2-number">2</div>
+                    <div class="step-title" id="step-2-title">Business Details</div>
+                </div>
+                <div class="step-connector" id="connector-2"></div>
+                <div class="step">
+                    <div class="step-number" id="step-3-number">3</div>
+                    <div class="step-title" id="step-3-title">Schedule Preferences</div>
+                </div>
+            </div>
+
+            <form id="demo-form">
+                <!-- Step 1: Contact Information -->
+                <div class="form-step active" id="step-1">
+                    <div class="form-content">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">First Name *</label>
+                                <input type="text" class="form-input" id="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Last Name *</label>
+                                <input type="text" class="form-input" id="lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email *</label>
+                            <input type="email" class="form-input" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Company *</label>
+                            <input type="text" class="form-input" id="company" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Business Details -->
+                <div class="form-step" id="step-2">
+                    <div class="form-content">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Job Title *</label>
+                                <input type="text" class="form-input" id="jobTitle" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Phone Number</label>
+                                <input type="tel" class="form-input" id="phone">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Company Size *</label>
+                                <select class="form-select" id="companySize" required>
+                                    <option value="">Select size</option>
+                                    <option value="1-50">1-50 employees</option>
+                                    <option value="51-200">51-200 employees</option>
+                                    <option value="201-1000">201-1,000 employees</option>
+                                    <option value="1001-5000">1,001-5,000 employees</option>
+                                    <option value="5000+">5,000+ employees</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Industry *</label>
+                                <select class="form-select" id="industry" required>
+                                    <option value="">Select industry</option>
+                                    <option value="commercial-insurance">Commercial Insurance</option>
+                                    <option value="property-casualty">Property & Casualty</option>
+                                    <option value="specialty-insurance">Specialty Insurance</option>
+                                    <option value="reinsurance">Reinsurance</option>
+                                    <option value="insurtech">InsurTech</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Primary Use Case *</label>
+                            <select class="form-select" id="useCase" required>
+                                <option value="">Select primary interest</option>
+                                <option value="submission-processing">Submission Processing Automation</option>
+                                <option value="underwriting-intelligence">Underwriting Intelligence</option>
+                                <option value="claims-automation">Claims Processing Automation</option>
+                                <option value="compliance-governance">AI Compliance & Governance</option>
+                                <option value="cross-platform-integration">Cross-Platform Integration</option>
+                                <option value="general-evaluation">General Platform Evaluation</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Schedule Preferences -->
+                <div class="form-step" id="step-3">
+                    <div class="form-content">
+                        <div class="form-group">
+                            <label class="form-label">Preferred Time Zone</label>
+                            <select class="form-select" id="timezone">
+                                <option value="EST">Eastern Time (EST)</option>
+                                <option value="CST">Central Time (CST)</option>
+                                <option value="MST">Mountain Time (MST)</option>
+                                <option value="PST">Pacific Time (PST)</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Additional Comments</label>
+                            <textarea class="form-input" id="comments" rows="4" placeholder="Any specific areas of interest or questions for our team?"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-back" id="prevBtn" onclick="changeStep(-1)" disabled>BACK</button>
+                    <button type="button" class="btn-next" id="nextBtn" onclick="changeStep(1)">NEXT</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="demo-info-section">
+            <div class="info-card">
+                <h3>What to Expect</h3>
+                <ul class="info-list">
+                    <li>30-minute personalized demo</li>
+                    <li>Live Q&A with our experts</li>
+                    <li>Real-world use case examples</li>
+                    <li>Technical architecture overview</li>
+                    <li>Implementation roadmap discussion</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h3>Demo Highlights</h3>
+                <ul class="info-list">
+                    <li>Agentic workflow automation</li>
+                    <li>Data extraction & analysis</li>
+                    <li>Risk assessment capabilities</li>
+                    <li>Integration with existing systems</li>
+                    <li>ROI & performance metrics</li>
+                </ul>
+            </div>
+
+            <div class="contact-info">
+                <h4>Questions?</h4>
+                <p>Our team is here to help you understand how our platform can benefit your organization.</p>
+                <a href="mailto:sales@elevatenow.com" class="contact-btn">CONTACT US</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let currentStep = 1;
+    const totalSteps = 3;
+
+    // Navigation functions
+    function scrollToTop() {
+        const mainContent = document.getElementById('main-content');
+        const demoPage = document.getElementById('demo-page');
         
-        // Navbar scroll effect
-        let lastScroll = 0;
-        const navbar = document.querySelector('.nav-container');
+        // Show main content, hide demo page
+        mainContent.style.display = 'block';
+        demoPage.classList.remove('active');
         
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showDemoPage() {
+        const mainContent = document.getElementById('main-content');
+        const demoPage = document.getElementById('demo-page');
+        
+        // Hide main content, show demo page
+        mainContent.style.display = 'none';
+        demoPage.classList.add('active');
+        
+        // Reset form to step 1
+        currentStep = 1;
+        showStep(currentStep);
+        
+        // Scroll to top of demo page
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Demo form functions
+    function changeStep(direction) {
+        if (direction === 1 && currentStep < totalSteps) {
+            // Validate current step before proceeding
+            if (validateStep(currentStep)) {
+                currentStep++;
+                showStep(currentStep);
+            }
+        } else if (direction === -1 && currentStep > 1) {
+            currentStep--;
+            showStep(currentStep);
+        }
+    }
+
+    function showStep(step) {
+        // Hide all steps
+        for (let i = 1; i <= totalSteps; i++) {
+            const stepElement = document.getElementById(`step-${i}`);
+            const stepNumber = document.getElementById(`step-${i}-number`);
+            const stepTitle = document.getElementById(`step-${i}-title`);
             
-            if (currentScroll > 100) {
-                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
+            stepElement.classList.remove('active');
+            stepNumber.classList.remove('active', 'completed');
+            stepTitle.classList.remove('active');
+            
+            if (i < step) {
+                stepNumber.classList.add('completed');
+                stepNumber.innerHTML = '✓';
             } else {
-                navbar.style.boxShadow = 'none';
+                stepNumber.innerHTML = i;
             }
             
-            lastScroll = currentScroll;
-        });
-        
-        // Mobile menu toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navMenu = document.querySelector('.nav-menu');
-        
-        mobileMenuBtn?.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            mobileMenuBtn.classList.toggle('active');
-        });
-        
-        // Product carousel
-        const slides = document.querySelectorAll('.carousel-slide');
-        const dots = document.querySelectorAll('.carousel-dot');
-        let currentSlide = 0;
-        
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
-            });
-            
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
+            if (i === step) {
+                stepElement.classList.add('active');
+                stepNumber.classList.add('active');
+                stepTitle.classList.add('active');
+            }
         }
         
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
+        // Update connectors
+        for (let i = 1; i < totalSteps; i++) {
+            const connector = document.getElementById(`connector-${i}`);
+            if (i < step) {
+                connector.classList.add('completed');
+            } else {
+                connector.classList.remove('completed');
+            }
+        }
+        
+        // Update buttons
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        prevBtn.disabled = (step === 1);
+        
+        if (step === totalSteps) {
+            nextBtn.innerHTML = 'SUBMIT REQUEST';
+            nextBtn.onclick = submitForm;
+        } else {
+            nextBtn.innerHTML = 'NEXT';
+            nextBtn.onclick = () => changeStep(1);
+        }
+    }
+
+    function validateStep(step) {
+        const requiredFields = {
+            1: ['firstName', 'lastName', 'email', 'company'],
+            2: ['jobTitle', 'companySize', 'industry', 'useCase'],
+            3: [] // No required fields in step 3
+        };
+        
+        const fields = requiredFields[step] || [];
+        let isValid = true;
+        
+        fields.forEach(fieldId => {
+            const field = document.getElementById(fieldId);
+            if (!field.value.trim()) {
+                field.style.borderColor = '#ef4444';
+                isValid = false;
+            } else {
+                field.style.borderColor = '#d1d5db';
+            }
+        });
+        
+        if (!isValid) {
+            alert('Please fill in all required fields.');
+        }
+        
+        return isValid;
+    }
+
+    function submitForm() {
+        // Collect form data
+        const formData = {
+            firstName: document.getElementById('firstName').value,
+            lastName: document.getElementById('lastName').value,
+            email: document.getElementById('email').value,
+            company: document.getElementById('company').value,
+            jobTitle: document.getElementById('jobTitle').value,
+            phone: document.getElementById('phone').value,
+            companySize: document.getElementById('companySize').value,
+            industry: document.getElementById('industry').value,
+            useCase: document.getElementById('useCase').value,
+            timezone: document.getElementById('timezone').value,
+            comments: document.getElementById('comments').value
+        };
+        
+        // Here you would normally send the data to your backend
+        console.log('Form submitted:', formData);
+        
+        // Show success message
+        alert('Thank you for your interest! Our team will contact you within 24 hours to schedule your personalized demo.');
+        
+        // Return to main page
+        scrollToTop();
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // Navbar scroll effect
+    let lastScroll = 0;
+    const navbar = document.querySelector('.nav-container');
+    
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > 100) {
+            navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
+        } else {
+            navbar.style.boxShadow = 'none';
+        }
+        
+        lastScroll = currentScroll;
+    });
+    
+    // Mobile menu toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    mobileMenuBtn?.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        mobileMenuBtn.classList.toggle('active');
+    });
+    
+    // Product carousel
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dot');
+    let currentSlide = 0;
+    
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
+        });
+        
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+    }
+    
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+    
+    // Auto-advance carousel
+    setInterval(nextSlide, 5000);
+    
+    // Click handlers for dots
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentSlide = index;
             showSlide(currentSlide);
-        }
-        
-        // Auto-advance carousel
-        setInterval(nextSlide, 5000);
-        
-        // Click handlers for dots
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentSlide = index;
-                showSlide(currentSlide);
-            });
         });
-    </script>
+    });
+</script>
 </body>
 </html>
